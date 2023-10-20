@@ -59,3 +59,16 @@
 ### 13 Oct 2023
 * *5 hours* further reading and finding new papers
 * *1/2 hour* Integrating and modifying discord template
+
+## Week 5
+
+### 16 Oct 2023
+* *5 hours* Trying to bug fix code
+
+### 17 Oct 2023
+* *2 hours* Further reading
+* *1/2 hour* Preparing for supervisor meeting
+* *1/2 hour* Meeting with supervisor
+
+### 20 Oct 2023
+* *1 hour* Writing up meeting minutes and timelog
