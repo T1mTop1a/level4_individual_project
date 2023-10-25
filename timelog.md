@@ -72,3 +72,17 @@
 
 ### 20 Oct 2023
 * *1 hour* Writing up meeting minutes and timelog
+
+## Week 6
+
+### 23 Oct 2023
+* *4 hours* Creating subset of dataset
+
+### 24 Oct 2023
+* *2 hours* Exploring subset
+* *1 hour* Researching knowledge graph
+* *1/2 hour* Preparing for supervisor meeting
+* *1/2 hour* Meeting with supervisor
+
+### 25 Oct 2023 
+* *1 hour* Writing up meeting minutes and timelog
