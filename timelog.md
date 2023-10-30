@@ -86,3 +86,8 @@
 
 ### 25 Oct 2023 
 * *1 hour* Writing up meeting minutes and timelog
+
+## Week 7
+
+### 30 Oct 2023
+* *1 1/2 hours* Counting and filtering mesh terms
