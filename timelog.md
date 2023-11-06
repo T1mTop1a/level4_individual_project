@@ -91,3 +91,10 @@
 
 ### 30 Oct 2023
 * *1 1/2 hours* Counting and filtering mesh terms
+
+### 31 Oct 2023
+* *1/2 hour* Preparing for supervisor meeting
+* *1/2 hour* Meeting with supervisor
+
+### 06 Nov 2023
+* *1 hour* Writing up meeting minutes and timelog
