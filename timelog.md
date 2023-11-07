@@ -98,3 +98,7 @@
 
 ### 06 Nov 2023
 * *1 hour* Writing up meeting minutes and timelog
+* *4 hours* Writing functions for dataset
+
+### 07 Nov 2023
+* *3 hours* creating files storing dictionaries of pairs and their frequencies
