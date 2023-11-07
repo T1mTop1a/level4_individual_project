@@ -71,7 +71,7 @@
 * *1/2 hour* Meeting with supervisor
 
 ### 20 Oct 2023
-* *1 hour* Writing up meeting minutes and timelog
+* *1/2 hour* Writing up meeting minutes and timelog
 
 ## Week 6
 
@@ -85,7 +85,7 @@
 * *1/2 hour* Meeting with supervisor
 
 ### 25 Oct 2023 
-* *1 hour* Writing up meeting minutes and timelog
+* *1/2 hour* Writing up meeting minutes and timelog
 
 ## Week 7
 
@@ -97,8 +97,11 @@
 * *1/2 hour* Meeting with supervisor
 
 ### 06 Nov 2023
-* *1 hour* Writing up meeting minutes and timelog
+* *1/2 hour* Writing up meeting minutes and timelog
 * *4 hours* Writing functions for dataset
 
 ### 07 Nov 2023
 * *3 hours* creating files storing dictionaries of pairs and their frequencies
+* *1/2 hour* Preparing for supervisor meeting
+* *1/2 hour* Meeting with supervisor
+* *1/2 hour* Writing up meeting minutes and timelog
