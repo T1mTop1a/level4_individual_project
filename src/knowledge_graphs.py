@@ -1,10 +1,8 @@
-from tqdm import tqdm
 import pickle
 import dataset_functions as df
 import knowledge_graph_functions as kgf
-import pandas as pd
-import networkx as nx
-import matplotlib.pyplot as plt
+import networkx as nx   # used for graph visualisation
+import matplotlib.pyplot as plt # used for graph visualisation
 
 before_2008_path = df.path_to_data(1, "before_2008_pairs.pkl")
 after_2008_path = df.path_to_data(1, "after_2008_pairs.pkl")
@@ -22,6 +20,14 @@ after_2008_head, after_2008_relation, after_2008_tail = kgf.create_lists(after_2
 before_2008_graph = kgf.create_knowledge_graph(before_2008_head, before_2008_relation, before_2008_tail)
 
 after_2008_graph = kgf.create_knowledge_graph(after_2008_head, after_2008_relation, after_2008_tail)
+
+before_2008_graph_path = df.path_to_data(1, "before_2008_graph.pkl")
+with open(before_2008_graph_path, 'wb') as fp:
+    pickle.dump(before_2008_graph, fp)
+
+after_2008_graph_path = df.path_to_data(1, "after_2008_graph.pkl")
+with open(after_2008_graph_path, 'wb') as fp:
+    pickle.dump(after_2008_graph, fp)
 
 # visualizing full graph. Running takes eternity
 '''
