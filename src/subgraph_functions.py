@@ -5,7 +5,12 @@ def create_subgraph_using_nodes(graph, nodes):
     return graph.subgraph(nodes)
 
 def create_subgraph_with_x_nodes(graph, x):
-    clus_coef = nx.clustering(graph)
-    c = Counter(clus_coef)
-    nodes = c.most_common(x)
+    count = 0
+    nodes = []
+    for node in graph:
+        if count < x:
+            nodes.append(node)
+            count += 1
+        else:
+            break
     return graph.subgraph(nodes)
