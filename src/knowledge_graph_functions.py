@@ -24,7 +24,7 @@ def create_knowledge_graph(head, relation, tail):
 
     graph = nx.Graph()
     for _, row in tqdm(df.iterrows()):
-        graph.add_edge(row['head'], row['tail'], label=row['relation'])
+        graph.add_edge(row['head'], row['tail'], weight=row['relation'])
 
     print("Graph complete")
     

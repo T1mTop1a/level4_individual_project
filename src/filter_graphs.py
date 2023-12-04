@@ -39,16 +39,6 @@ for node in tqdm(after_2008_graph):
     if not before_2008_graph.has_node(node):
         print(node)
 
-filtered_before_2008_graph = before_2008_graph.subgraph(nodes_list)
-
-before_2008_graph_filtered_path = df.path_to_data(1, "before_2008_graph_filtered.pkl")
-with open(before_2008_graph_filtered_path, 'wb') as fp:
-    pickle.dump(filtered_before_2008_graph, fp)
-
-print(" ")
-print("filtered before 2008 graph number of edges:", filtered_before_2008_graph.size())
-print("filtered before 2008 graph number of nodes:", filtered_before_2008_graph.number_of_nodes())
-
 '''
 Results:
 original graph number of edges: 1281979
