@@ -3,6 +3,7 @@ import dataset_functions as df
 import abc_functions as af
 import knowledge_graph_functions as kgf # If you want to display
 import pickle
+import networkx as nx
 
 before_2008_graph_path = df.path_to_data(1, "before_2008_graph.pkl")
 after_2008_graph_filtered_path = df.path_to_data(1, "after_2008_graph_filtered.pkl")
@@ -19,26 +20,17 @@ print("created after subgraph")
 nodes = []
 for node in after_2008_subgraph:
     nodes.append(node)
-before_2008_subgraph = sf.create_subgraph_using_nodes(before_2008_graph, nodes)
-print("created before subgraph")
-print(" ")
 
-print("before 2008 subgraph number of edges:", before_2008_subgraph.size())
-print("before 2008 subgraph number of nodes:", before_2008_subgraph.number_of_nodes())
-print(" ")
-print("after 2008 subgraph number of edges:", after_2008_subgraph.size())
-print("after 2008 subgraph number of nodes:", after_2008_subgraph.number_of_nodes())
-print(" ") 
+before_2008_subgraph = before_2008_graph.subgraph(nodes)
 
-# kgf.display_graph(before_2008_subgraph, "before 2008 subgraph")
-# kgf.display_graph(after_2008_subgraph, "after 2008 subgraph")
+biodiversity_c = af.dict_of_c_given_a(before_2008_graph, "Biodiversity")
+biodiversity_c_sorted = af.sort_c(biodiversity_c)
 
-nodes = list(before_2008_subgraph.nodes)
-for node in nodes:
-    c_nodes = af.dict_of_c_given_a(before_2008_subgraph, node)
-    print(f"{node} has {len(c_nodes)} C nodes.")
-    if c_nodes:
-        most_popular_c = max(c_nodes, key=c_nodes.get)
-        print(f"{node}: most popular C node is {most_popular_c} with a value of {c_nodes[most_popular_c]}.\n")
+biodiversity_after_neighbours = list(after_2008_graph.neighbors("Biodiversity"))
+
+for i in range(10):
+    name = biodiversity_c_sorted[i][0]
+    if name not in biodiversity_after_neighbours:
+        print(name, "is a new link, and was in position", i)
     else:
-        print(" ")
+        print(name, "is not a new link")
