@@ -96,6 +96,8 @@
 * *1/2 hour* Preparing for supervisor meeting
 * *1/2 hour* Meeting with supervisor
 
+## Week 8
+
 ### 06 Nov 2023
 * *1/2 hour* Writing up meeting minutes and timelog
 * *4 hours* Writing functions for dataset
@@ -105,3 +107,50 @@
 * *1/2 hour* Preparing for supervisor meeting
 * *1/2 hour* Meeting with supervisor
 * *1/2 hour* Writing up meeting minutes and timelog
+
+### 11 NOV 2023
+* *1 hour* Creating functions on the train
+
+## Week 9
+
+### 17 Nov 2023
+* *4 hours* Filtering graphs
+
+## Week 10
+
+### 19 Nov 2023 
+* *2 hours* fixing filtering
+
+### 20 Nov 2023
+* *3 hours* Researching Swanson ABC method further
+* *2 hours* Starting Swanson set up
+
+### 21 Nov 2023
+* *2 hours* Developing first Swanson approach
+* *1 hour* Preparing for supervisor meeting
+* *1/2 hour* Meeting with supervisor
+* *1/2 hour* Writing up meeting minutes and timelog
+
+## Week 11
+
+### 29 Nov 2023
+* *1/2 hour* Changed dataset to weight instead of label
+
+### 1 Dec 2023
+* *4 hours* Completed abc implementation
+
+## Week 12
+
+### 4 Dec 2023
+* *4 hours* Implemented abc evaluation to some extent
+
+### 5 Dec 2023
+* *1/2 hour* Preparing for supervisor meeting
+* *1/2 hour* Meeting with supervisor
+* *1/2 hour* Writing up meeting minutes and timelog
+
+## Week 13 
+
+### 12 Dec 2023
+* *1 hour* Reading about hits @k
+* *1/2 hour* Creating standard subgraphs for evaluating different systems
