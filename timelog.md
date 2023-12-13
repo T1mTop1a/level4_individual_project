@@ -154,3 +154,6 @@
 ### 12 Dec 2023
 * *1 hour* Reading about hits @k
 * *1/2 hour* Creating standard subgraphs for evaluating different systems
+
+### 13 Dec 2023
+* *2 hours* hits@k evaluation implemented
