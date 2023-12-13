@@ -2,12 +2,12 @@ import dataset_functions as df
 import abc_functions as af
 import pickle
 
-before_2008_graph_path = df.path_to_data(1, "before_2008_graph.pkl")
-after_2008_graph_filtered_path = df.path_to_data(1, "after_2008_graph_filtered.pkl")
+before_2008_subgraph_path = df.path_to_data(1, "before_2008_subgraph.pkl")
+after_2008_subgraph_path = df.path_to_data(1, "after_2008_subgraph.pkl")
 
-with open(before_2008_graph_path, 'rb') as fp:
+with open(before_2008_subgraph_path, 'rb') as fp:
     before_2008_graph = pickle.load(fp)
-with open(after_2008_graph_filtered_path, 'rb') as fp:
+with open(after_2008_subgraph_path, 'rb') as fp:
     after_2008_graph = pickle.load(fp)
 print("opened data")
 
@@ -20,7 +20,7 @@ for node in before_2008_graph.nodes():
         print(node)
         count += 1
         node_results = {"new": [], "not_new": []}
-        get_c = af.dict_of_c_given_a(before_2008_graph, node)
+        get_c = af.dict_of_c_given_a_weight(before_2008_graph, node)
         c_sorted = af.sort_c(get_c)
         after_neighbours = list(after_2008_graph.neighbors(node))
         for i in range(10):

@@ -23,7 +23,7 @@ for node in after_2008_subgraph:
 
 before_2008_subgraph = before_2008_graph.subgraph(nodes)
 
-biodiversity_c = af.dict_of_c_given_a(before_2008_graph, "Biodiversity")
+biodiversity_c = af.dict_of_c_given_a_weight(before_2008_graph, "Biodiversity")
 biodiversity_c_sorted = af.sort_c(biodiversity_c)
 
 biodiversity_after_neighbours = list(after_2008_graph.neighbors("Biodiversity"))

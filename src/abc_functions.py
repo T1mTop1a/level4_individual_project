@@ -1,4 +1,4 @@
-def dict_of_c_given_a(graph, a):
+def dict_of_c_given_a_weight(graph, a):
     b_nodes = list(graph.neighbors(a))
     c_nodes_count = {}
     for b in b_nodes:
