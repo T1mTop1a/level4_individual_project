@@ -157,3 +157,6 @@
 
 ### 13 Dec 2023
 * *2 hours* hits@k evaluation implemented
+
+### 14 Dec 2023
+* *1 1/2 hours* abc frequency and weight and frequency implementation and evaluation
