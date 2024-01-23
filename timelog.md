@@ -160,3 +160,47 @@
 
 ### 14 Dec 2023
 * *1 1/2 hours* abc frequency and weight and frequency implementation and evaluation
+
+### 15 Dec 2023
+* *2 hours* Researching alternate methods to abc
+
+### 16 Dec 2023 
+* *1 hour* Researching machine learning approach
+
+## Week 14 
+
+### 18 Dec 2023
+* *4 hours* Reading about using pytorch
+* *2 hours* Practicing pytorch tutorials
+
+### 19 Dec 2023
+* *1/2 hour* Preparing for supervisor meeting
+* *1/2 hour* Meeting with supervisor
+* *1/2 hour* Writing up meeting minutes and timelog
+
+### 20 Dec 2023
+* *2 hours* Writing Status Report
+
+## Week 15
+
+### 11 Jan 2024
+* *7 hours* Researching GNN configuration
+
+### 12 Jan 2024
+* *5 hours* Attempting to implement system
+
+## Week 16
+
+### 16 Jan 2024
+* *4 hours* Attempting to implement system
+
+### 18 Jan 2024
+* *4 hours* Attempting to implement system
+* *1/2 hour* Preparing for supervisor meeting
+* *1/2 hour* Meeting with supervisor
+* *1/2 hour* Writing up meeting minutes and timelog
+
+## Week 17 
+
+### 23 Jan 2024
+* *4 hours* implement medium prototype
