@@ -17,6 +17,7 @@ with gzip.open(file_path,'rt') as f:
 
     article = reader.read()
     print(article)
+    '''
     major_mesh = []
     for tag in article['mesh']:
         if tag['is_major'] == 'Y':
@@ -38,3 +39,4 @@ for i in tqdm(range(1000000)):
 with open(pickle_file_path, 'wb') as fp:
     pickle.dump(first_1000000_articles, fp)
 
+'''

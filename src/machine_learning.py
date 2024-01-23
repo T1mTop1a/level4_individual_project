@@ -5,7 +5,7 @@ import torch_geometric
 from torch_geometric.utils.convert import from_networkx
 import torch_geometric.transforms as T
 from torch_geometric.loader import LinkNeighborLoader
-from torch_geometric.nn import SAGEConv, to_hetero
+from torch_geometric.nn import SAGEConv
 import torch.nn.functional as F
 
 print("import complete")
@@ -28,7 +28,6 @@ print("converted graphs")
 transform = T.RandomLinkSplit(
     num_val = 0.49,
     num_test = 0.49,
-    neg_sampling_ratio = 2.0,
     add_negative_train_samples = False,
     is_undirected = True,
 )
@@ -39,7 +38,11 @@ training_load = LinkNeighborLoader(
     data = pytorch_graph_before,
     batch_size = 128,
     num_neighbors = [20,10],
-    neg_sampling_ratio = 2.0,
     shuffle = True,
 )
 print("Defined batch loader")
+
+
+print("======================================")
+print(pytorch_graph_before.edge_index)
+print(pytorch_graph_before.num_edges)
