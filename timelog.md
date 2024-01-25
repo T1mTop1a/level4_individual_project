@@ -204,3 +204,12 @@
 
 ### 23 Jan 2024
 * *4 hours* implement medium prototype
+
+### 24 Jan 2024
+* *2 hours* Converting to homogeneous
+
+### 25 Jan 2024
+* *3 hours* Fitting to my data
+* *1/2 hour* Preparing for supervisor meeting
+* *1/2 hour* Meeting with supervisor
+* *1/2 hour* Writing up meeting minutes and timelog
