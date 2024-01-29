@@ -25,6 +25,8 @@ pytorch_graph_before = from_networkx(before_2008_graph)
 pytorch_graph_after = from_networkx(after_2008_graph)
 print("converted graphs")
 
+print(pytorch_graph_before.edge_label_index)
+
 pytorch_graph_before.node_id = pytorch_graph_before.edge_index[0].unique()
 
 transform = T.RandomLinkSplit(
@@ -49,8 +51,10 @@ class GNN(torch.nn.Module):
         return x
 
 class Classifier(torch.nn.Module):
-    def forward(self, x_emb, x_lin):
-        return (x_emb * x_lin).sum(dim=-1)
+    def forward(self, x_1, x_2, edge_index):
+        edge_feat_1 = x_1[edge_index[0]]
+        edge_feat_2 = x_2[edge_index[1]]
+        return (edge_feat_1 * edge_feat_2).sum(dim=-1)
 
 class Model(torch.nn.Module):
     def __init__(self, hidden_channels):
@@ -68,6 +72,7 @@ class Model(torch.nn.Module):
         pred = self.classifier(
             x_dict["emb"],
             x_dict["lin"],
+            pytorch_graph_before.edge_index,
         )
         return pred
 
