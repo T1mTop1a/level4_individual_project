@@ -133,7 +133,6 @@ class GNN(torch.nn.Module):
         self.conv1 = SAGEConv(hidden_channels, hidden_channels)
         self.conv2 = SAGEConv(hidden_channels, hidden_channels)
     def forward(self, x, edge_index):
-        print("x in GNN Forward is =",x)
         x = F.relu(self.conv1(x, edge_index))
         x = self.conv2(x, edge_index)
         return x
@@ -170,7 +169,7 @@ class Model(torch.nn.Module):
         x_dict = {
           "user": self.user_emb(data["user"].node_id),
           "movie": self.movie_lin(data["movie"].x) + self.movie_emb(data["movie"].node_id),
-        } 
+        }
         # `x_dict` holds feature matrices of all node types
         # `edge_index_dict` holds all edge indices of all edge types
         x_dict = self.gnn(x_dict, data.edge_index_dict)
