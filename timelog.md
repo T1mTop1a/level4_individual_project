@@ -226,4 +226,4 @@
 * *4 hours* Got training working on My data
 * *1 hour* Set up Latex on VSCode
 ### 01 feb 2024
-* *1 hour* Created sections in report
+* *2 hour* Creating plan in report
