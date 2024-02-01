@@ -213,3 +213,17 @@
 * *1/2 hour* Preparing for supervisor meeting
 * *1/2 hour* Meeting with supervisor
 * *1/2 hour* Writing up meeting minutes and timelog
+
+### 26 Jan 2024
+* *2 hours* Edited Machine learning code
+
+## Week 18
+
+### 29 Jan 2024
+* *2 hours* Worked on developing Homogeneous graph system
+
+### 30 Jan 2024 
+* *4 hours* Got training working on My data
+* *1 hour* Set up Latex on VSCode
+### 01 feb 2024
+* *1 hour* Created sections in report
