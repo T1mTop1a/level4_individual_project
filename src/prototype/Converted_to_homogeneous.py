@@ -30,14 +30,12 @@ assert movie_feat.size() == (9742, 20)  # 20 genres in total.
 ratings_df = pd.read_csv(ratings_path)
 print("movie data loaded")
 
-# Create a mapping from unique user indices to range [0, num_user_nodes):
 unique_user_id = ratings_df['userId'].unique()
 unique_user_id = pd.DataFrame(data={
     'userId': unique_user_id,
     'mappedID': pd.RangeIndex(len(unique_user_id)),
 })
 
-# Create a mapping from unique movie indices to range [0, num_movie_nodes):
 unique_movie_id = ratings_df['movieId'].unique()
 unique_movie_id = pd.DataFrame(data={
     'movieId': unique_movie_id,
@@ -45,7 +43,6 @@ unique_movie_id = pd.DataFrame(data={
 })
 print("data mapped")
 
-# Perform merge to obtain the edges from users and movies:
 ratings_user_id = pd.merge(ratings_df['userId'], unique_user_id,
                             left_on='userId', right_on='userId', how='left')
 ratings_user_id = torch.from_numpy(ratings_user_id['mappedID'].values)
@@ -53,8 +50,7 @@ ratings_movie_id = pd.merge(ratings_df['movieId'], unique_movie_id,
                             left_on='movieId', right_on='movieId', how='left')
 ratings_movie_id = torch.from_numpy(ratings_movie_id['mappedID'].values)
 
-# With this, we are ready to construct our `edge_index` in COO format
-# following PyG semantics:
+
 edge_index_user_to_movie = torch.stack([ratings_user_id, ratings_movie_id], dim=0)
 assert edge_index_user_to_movie.size() == (2, 100836)
 print("constructed edge_index")
@@ -64,11 +60,8 @@ data.x = movie_feat
 data.edge_index = edge_index_user_to_movie
 data.node_id = torch.arange(len(unique_user_id) + len(movies_df))
 
-# In this case, there is no need for ToUndirected transform for homogeneous graphs.
-
 print("prepared graph")
 
-# Split the set of edges into training (80%), validation (10%), and testing edges (10%).
 transform = T.RandomLinkSplit(
     num_val=0.1,
     num_test=0.1,
@@ -79,9 +72,6 @@ transform = T.RandomLinkSplit(
 train_data, val_data, test_data = transform(data)
 print("define data split")
 
-# In the first hop, sample at most 20 neighbors. In the second hop, sample at most 10 neighbors.
-# In addition, during training, sample negative edges on-the-fly with a ratio of 2:1.
-# Use LinkLoader for homogeneous graphs:
 '''
 train_loader = LinkLoader(
     data=train_data,
@@ -155,7 +145,6 @@ for epoch in range(1, 6):
 
 print("training complete")
 
-# Define the validation seed edges:
 val_loader = LinkLoader(
     data=val_data,
     num_neighbors=[20, 10],

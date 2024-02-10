@@ -11,8 +11,11 @@ with open(before_2008_graph_path, 'rb') as fp:
 with open(after_2008_graph_path, 'rb') as fp:
     after_2008_graph = pickle.load(fp)
 
-print("original graph number of edges:", after_2008_graph.size())
-print("original graph number of nodes:", after_2008_graph.number_of_nodes())
+print("original after graph number of edges:", after_2008_graph.size())
+print("original after graph number of nodes:", after_2008_graph.number_of_nodes())
+print(" ")
+print("original before graph number of edges:", before_2008_graph.size())
+print("original before graph number of nodes:", before_2008_graph.number_of_nodes())
 print(" ")
 
 # Only nodes that existed before 2008
@@ -23,21 +26,26 @@ for node in tqdm(after_2008_graph):
         for sub_node in nodes_list:
             if before_2008_graph.has_edge(node, sub_node) and after_2008_graph.has_edge(node, sub_node):
                 after_2008_graph.remove_edge(node, sub_node)
+                before_2008_graph.remove_edge(node, sub_node)
         nodes_list.append(node)
 
 filtered_after_2008_graph = after_2008_graph.subgraph(nodes_list)
+filtered_before_2008_graph = before_2008_graph.subgraph(nodes_list)
 
 after_2008_graph_filtered_path = df.path_to_data(1, "after_2008_graph_filtered.pkl")
+before_2008_graph_filtered_path = df.path_to_data(1, "before_2008_graph_filtered.pkl")
+
 with open(after_2008_graph_filtered_path, 'wb') as fp:
     pickle.dump(filtered_after_2008_graph, fp)
+with open(before_2008_graph_filtered_path, 'wb') as fp:
+    pickle.dump(filtered_before_2008_graph, fp)
 
 print("filtered after 2008 graph number of edges:", filtered_after_2008_graph.size())
 print("filtered after 2008 graph number of nodes:", filtered_after_2008_graph.number_of_nodes())
 print(" ")
-
-for node in tqdm(after_2008_graph):
-    if not before_2008_graph.has_node(node):
-        print(node)
+print("filtered before 2008 graph number of edges:", filtered_before_2008_graph.size())
+print("filtered before 2008 graph number of nodes:", filtered_before_2008_graph.number_of_nodes())
+print(" ")
 
 '''
 Results:
