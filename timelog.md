@@ -225,5 +225,24 @@
 ### 30 Jan 2024 
 * *4 hours* Got training working on My data
 * *1 hour* Set up Latex on VSCode
-### 01 feb 2024
-* *2 hour* Creating plan in report
+
+### 01 Feb 2024
+* *2 hours* Creating plan in report
+
+### 02 Feb 2024
+* *2 hours* Furthering report plan
+* *3 hours* Fiddling with GNN code
+
+## Week 19
+
+### 05 Feb 2024
+* *1 hour* Working on report plan
+* *1/2 hour* Preparing for supervisor meeting
+* *1/2 hour* Meeting with supervisor
+* *1/2 hour* Writing up meeting minutes and timelog
+
+### 08 Feb 2024
+* *4 hours* Working on getting subgraph GNN working
+
+### 09 Feb 2024
+* *2 hours* Making GNN work on main graph
