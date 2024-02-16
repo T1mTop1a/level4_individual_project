@@ -246,3 +246,22 @@
 
 ### 09 Feb 2024
 * *2 hours* Making GNN work on main graph
+
+### 10 Feb 2024
+* *5 hours* Writing dissertation
+
+### 11 Feb 2024
+* *5 hours* Writing dissertation
+
+## Week 20 
+
+### 13 Feb 2024
+* *3 hours* Implementing Matrix factorization
+
+### 15 Feb 2024
+* *3 hours* Implementing Matrix factorization
+* *1/2 hour* Preparing for supervisor meeting
+* *1/2 hour* Meeting with supervisor
+* *1/2 hour* Writing up meeting minutes and timelog
+
+### 16 Feb 2024
