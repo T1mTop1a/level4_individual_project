@@ -12,7 +12,7 @@ with open(after_2008_graph_filtered_path, 'rb') as fp:
 print("opened data")
 
 after_2008_subgraph = sf.create_subgraph_with_x_nodes(after_2008_graph, 1000)
-before_2008_subgrpah = before_2008_subgraph = before_2008_graph.subgraph(after_2008_subgraph.nodes())
+before_2008_subgraph = before_2008_graph.subgraph(after_2008_subgraph.nodes())
 print("created subgraphs")
 
 print("before 2008 graph edges:", after_2008_subgraph.size())

@@ -26,7 +26,6 @@ for node in tqdm(after_2008_graph):
         for sub_node in nodes_list:
             if before_2008_graph.has_edge(node, sub_node) and after_2008_graph.has_edge(node, sub_node):
                 after_2008_graph.remove_edge(node, sub_node)
-                before_2008_graph.remove_edge(node, sub_node)
         nodes_list.append(node)
 
 filtered_after_2008_graph = after_2008_graph.subgraph(nodes_list)

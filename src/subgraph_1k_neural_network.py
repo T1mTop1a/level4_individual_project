@@ -10,6 +10,7 @@ import torch_geometric.transforms as T
 from torch_geometric.nn import SAGEConv
 import torch.nn.functional as F
 from torch_geometric.utils import negative_sampling
+from torch_geometric.data import Data
 
 print("import complete")
 
@@ -27,39 +28,6 @@ print("opened data")
 pytorch_graph_before = from_networkx(before_2008_graph)
 pytorch_graph_after = from_networkx(after_2008_graph)
 print("converted graphs")
-
-values_before = {}
-for i in pytorch_graph_before.edge_index[0]:
-    val = i.item()
-    if val in values_before:
-        values_before[val] += 1
-    else:
-        values_before[val] = 1
-
-values_after = {}
-for i in pytorch_graph_after.edge_index[0]:
-    val = i.item()
-    if val in values_after:
-        values_after[val] += 1
-    else:
-        values_after[val] = 1
-
-top_values_before, top_values_after= {}, {}
-for i in range(100):
-    top_before = max(values_before, key=values_before.get)
-    top_values_before[top_before] = values_before[top_before]
-    values_before.pop(top_before, None)
-
-    top_after = max(values_after, key=values_after.get)
-    top_values_after[top_after] = values_after[top_after]
-    values_after.pop(top_after, None)
-
-shared = {}
-for node, val in top_values_before.items():
-    if node in top_values_after:
-        shared[node] = (val,top_values_after[node])
-
-print("Find shared popular nodes")
 
 pytorch_graph_before.node_id = torch.arange(1000)
 pytorch_graph_after.node_id = torch.arange(1000)
@@ -163,11 +131,6 @@ ground_truth_val = torch.cat(ground_truths_val, dim=0).cpu().numpy()
 auc = roc_auc_score(ground_truth_val, pred_val)
 print()
 print(f"Validation AUC: {auc:.4f}")
-
-pred_tensor = 
-for key in shared:
-
-    pass
 
 
 
