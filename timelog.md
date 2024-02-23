@@ -1,9 +1,9 @@
 # Timelog
 
-* PROJECT NAME
-* YOUR NAME
-* STUDENT_ID
-* SUPERVISOR NAME
+* Exploring using MeSH tags for literature based discovery
+* Timothy Baldock
+* S2385679b
+* Jake Lever
 
 ## Guidance
 
@@ -264,4 +264,24 @@
 * *1/2 hour* Meeting with supervisor
 * *1/2 hour* Writing up meeting minutes and timelog
 
-### 16 Feb 2024
+### 17 Feb 2024
+* *4 hours* Reformatted Dissertation work and wrote more
+
+### 18 Feb 2024
+* *5 hours* Ran tests on different hyperparameter arrangements
+
+## Week 21
+
+### 19 Feb 2024
+* *3 hours* Ran tests on different hyperparameter arrngements
+
+### 19 Feb 2024
+* *4 hours* Building comparable system
+
+### 20 Feb 2024
+* *4 hours* Building comparable system 
+
+### 22 Feb 2024
+* *1/2 hour* Preparing for supervisor meeting
+* *1/2 hour* Meeting with supervisor
+* *1/2 hour* Writing up meeting minutes and timelog
