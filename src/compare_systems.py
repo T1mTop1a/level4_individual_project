@@ -1,4 +1,5 @@
 import dataset_functions as df
+import abc_functions as af
 import pickle
 import numpy as np
 import networkx as nx
@@ -104,13 +105,43 @@ for key, val in edge_tensors.items():
 
 print(node_graphs.keys())
 
+# =========================== ABC SYSTEM ===========================    
+
+abc_output = {}
+for key, value in node_graphs.items():
+    abc_predictions = []
+    a_indecies = (pytorch_graph_before.edge_index[0] == key).nonzero(as_tuple=True)[0]
+    ab_edges = {}
+    for a_index in a_indecies:
+        a_ind = a_index.item()
+        ab_edges[pytorch_graph_before.edge_index[1][a_ind].item()] = 0
+
+    for target in value.edge_index[1]:
+        c_node = target.item()
+        indecies = (pytorch_graph_before.edge_index[0] == c_node).nonzero(as_tuple=True)[0]
+        bc_edges = {}
+        for index in indecies:
+            ind = index.item()
+            bc_edges[pytorch_graph_before.edge_index[1][ind].item()] = 0
+
+        b_count = 0
+        for connection in bc_edges:
+            if connection in ab_edges:
+                b_count +=1
+
+        abc_predictions.append(b_count)
+
+
+    abc_output[key] = abc_predictions
+
+print("abc complete")
+
+# =========================== GRAPH NEURAL NETWORK ===========================
 
 pytorch_graph_before.node_id = torch.arange(1000)
 pre_neg_sampling_edges_before_graph =  pytorch_graph_before.num_edges
 before_negative_edges = negative_sampling(pytorch_graph_before.edge_index, force_undirected = True)
 pytorch_graph_before.edge_index = torch.cat((pytorch_graph_before.edge_index, before_negative_edges),1)
-
-# =========================== GRAPH NEURAL NETWORK ===========================
 
 class GNN(torch.nn.Module):
     def __init__(self, hidden_channels):
@@ -178,17 +209,10 @@ for key, value in node_graphs.items():
         preds_val.append(model(value))
         ground_truths_val.append(value.ground_truth)
     pred_val = torch.cat(preds_val, dim=0).cpu().numpy()
-    ground_truth_val = torch.cat(ground_truths_val, dim=0).cpu().numpy()
-    auc = roc_auc_score(ground_truth_val, pred_val)
 
-    results = {}
-    results["ground_truth"] = ground_truth_val
-    results["prediction"] = pred_val
-    results["auc"] = auc
-    results["edge_index"] = value.edge_index
-    results["positive_edges"] = shared[key][1]
-    gnn_output[key] = results
+    gnn_output[key] = pred_val
 
+print ("GNN complete")
 # =========================== MATRIX FACTORIZATION ===========================
 
 class MatrixFactorization(torch.nn.Module):
@@ -234,15 +258,8 @@ for key, graph in node_graphs.items():
 
         prediction = model(row, col)
         predictions.append(prediction.item())
+    mf_output[key] = predictions
 
-    ground_truth = graph.ground_truth
-    auc = roc_auc_score(ground_truth, predictions)
-    results = {}
-    results["ground_truth"] = ground_truth
-    results["prediction"] = predictions
-    results["auc"] = auc
-    results["edge_index"] = graph.edge_index
-    results["positive_edges"] = shared[key][1]
-    mf_output[key] = results
+print("Matrix Factorization complete")
 
-# =========================== ABC SYSTEM ===========================
+# =========================== EVALUATION ===========================
