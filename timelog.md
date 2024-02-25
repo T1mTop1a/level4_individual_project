@@ -285,3 +285,8 @@
 * *1/2 hour* Preparing for supervisor meeting
 * *1/2 hour* Meeting with supervisor
 * *1/2 hour* Writing up meeting minutes and timelog
+
+### 24 Feb 2024
+* *4 hours* Making abc comparison 
+
+### 25 Feb 2024
