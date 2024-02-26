@@ -1,0 +1,140 @@
+Evaluation nodes info
+node id || total edges || positive edges
+356  ||  249  ||  5
+606  ||  273  ||  4
+939  ||  282  ||  14
+105  ||  334  ||  5
+230  ||  336  ||  10
+
+
+
+
+node:  356
+top x || number of positive returns || score relative to x and positive ratio
+1 || abc score 0 || abc relative score 0.0
+1 || gnn score 0 || gnn relative score 0.0
+1 || mf score 0 || mf relative score 0.0
+
+top x || number of positive returns || score relative to x and positive ratio
+10 || abc score 1 || abc relative score 4.98
+10 || gnn score 0 || gnn relative score 0.0
+10 || mf score 2 || mf relative score 9.96
+
+top x || number of positive returns || score relative to x and positive ratio
+20 || abc score 1 || abc relative score 2.49
+20 || gnn score 0 || gnn relative score 0.0
+20 || mf score 2 || mf relative score 4.98
+
+top x || number of positive returns || score relative to x and positive ratio
+50 || abc score 3 || abc relative score 2.988
+50 || gnn score 0 || gnn relative score 0.0
+50 || mf score 3 || mf relative score 2.988
+
+top x || number of positive returns || score relative to x and positive ratio
+100 || abc score 4 || abc relative score 1.992
+100 || gnn score 3 || gnn relative score 1.494
+100 || mf score 3 || mf relative score 1.494
+
+node:  606
+top x || number of positive returns || score relative to x and positive ratio
+1 || abc score 0 || abc relative score 0.0
+1 || gnn score 0 || gnn relative score 0.0
+1 || mf score 0 || mf relative score 0.0
+
+top x || number of positive returns || score relative to x and positive ratio
+10 || abc score 0 || abc relative score 0.0
+10 || gnn score 0 || gnn relative score 0.0
+10 || mf score 0 || mf relative score 0.0
+
+top x || number of positive returns || score relative to x and positive ratio
+20 || abc score 0 || abc relative score 0.0
+20 || gnn score 0 || gnn relative score 0.0
+20 || mf score 0 || mf relative score 0.0
+
+top x || number of positive returns || score relative to x and positive ratio
+50 || abc score 1 || abc relative score 1.365
+50 || gnn score 0 || gnn relative score 0.0
+50 || mf score 1 || mf relative score 1.365
+
+top x || number of positive returns || score relative to x and positive ratio
+100 || abc score 2 || abc relative score 1.365
+100 || gnn score 1 || gnn relative score 0.6825
+100 || mf score 1 || mf relative score 0.6825
+
+node:  939
+top x || number of positive returns || score relative to x and positive ratio
+1 || abc score 0 || abc relative score 0.0
+1 || gnn score 0 || gnn relative score 0.0
+1 || mf score 0 || mf relative score 0.0
+
+top x || number of positive returns || score relative to x and positive ratio
+10 || abc score 1 || abc relative score 2.0142857142857142
+10 || gnn score 2 || gnn relative score 4.0285714285714285
+10 || mf score 0 || mf relative score 0.0
+
+top x || number of positive returns || score relative to x and positive ratio
+20 || abc score 2 || abc relative score 2.0142857142857142
+20 || gnn score 3 || gnn relative score 3.0214285714285714
+20 || mf score 0 || mf relative score 0.0
+
+top x || number of positive returns || score relative to x and positive ratio
+50 || abc score 4 || abc relative score 1.6114285714285714
+50 || gnn score 5 || gnn relative score 2.0142857142857142
+50 || mf score 2 || mf relative score 0.8057142857142857
+
+top x || number of positive returns || score relative to x and positive ratio
+100 || abc score 10 || abc relative score 2.0142857142857142
+100 || gnn score 7 || gnn relative score 1.4100000000000001
+100 || mf score 3 || mf relative score 0.6042857142857142
+
+node:  105
+top x || number of positive returns || score relative to x and positive ratio
+1 || abc score 0 || abc relative score 0.0
+1 || gnn score 0 || gnn relative score 0.0
+1 || mf score 0 || mf relative score 0.0
+
+top x || number of positive returns || score relative to x and positive ratio
+10 || abc score 1 || abc relative score 6.680000000000001
+10 || gnn score 0 || gnn relative score 0.0
+10 || mf score 0 || mf relative score 0.0
+
+top x || number of positive returns || score relative to x and positive ratio
+20 || abc score 1 || abc relative score 3.3400000000000003
+20 || gnn score 0 || gnn relative score 0.0
+20 || mf score 0 || mf relative score 0.0
+
+top x || number of positive returns || score relative to x and positive ratio
+50 || abc score 3 || abc relative score 4.008
+50 || gnn score 1 || gnn relative score 1.336
+50 || mf score 0 || mf relative score 0.0
+
+top x || number of positive returns || score relative to x and positive ratio
+100 || abc score 4 || abc relative score 2.672
+100 || gnn score 1 || gnn relative score 0.668
+100 || mf score 0 || mf relative score 0.0
+
+node:  230
+top x || number of positive returns || score relative to x and positive ratio
+1 || abc score 0 || abc relative score 0.0
+1 || gnn score 0 || gnn relative score 0.0
+1 || mf score 0 || mf relative score 0.0
+
+top x || number of positive returns || score relative to x and positive ratio
+10 || abc score 1 || abc relative score 3.3600000000000003
+10 || gnn score 0 || gnn relative score 0.0
+10 || mf score 0 || mf relative score 0.0
+
+top x || number of positive returns || score relative to x and positive ratio
+20 || abc score 2 || abc relative score 3.3600000000000003
+20 || gnn score 1 || gnn relative score 1.6800000000000002
+20 || mf score 0 || mf relative score 0.0
+
+top x || number of positive returns || score relative to x and positive ratio
+50 || abc score 2 || abc relative score 1.344
+50 || gnn score 1 || gnn relative score 0.672
+50 || mf score 0 || mf relative score 0.0
+
+top x || number of positive returns || score relative to x and positive ratio
+100 || abc score 4 || abc relative score 1.344
+100 || gnn score 2 || gnn relative score 0.672
+100 || mf score 2 || mf relative score 0.672

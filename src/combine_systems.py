@@ -271,8 +271,6 @@ for key, graph in node_graphs.items():
 print("Matrix Factorization complete")
 
 # =========================== EVALUATION ===========================
-def relative_score(score, x, positives, length):
-    return (score / x) / (positives / length)
 
 def score_topx(results, original, x):
     topx = heapq.nlargest(x, range(len(results)), results.__getitem__)
@@ -283,15 +281,8 @@ def score_topx(results, original, x):
     
     rel_score = (score / x) / (original.positives / list(original.ground_truth.size())[0])
     return score, rel_score
-    
 
-print("Evaluation nodes info")    
-print("node id || total edges || positive edges")
-for key, value in node_graphs.items():
-    print(key, " || ", list(value.ground_truth.size())[0], " || ", value.positives)
-print("\n")
-print("\n")
-
+comparison = {}
 for key, value in node_graphs.items():
     abc_result = abc_output[key]
     gnn_result = gnn_output[key]
@@ -299,15 +290,38 @@ for key, value in node_graphs.items():
 
     x_values = [1,10,20,50,100]
 
-    print("node: ", key)
+    prediction_results = {}
+    prediction_results["abc"] = {}
+    prediction_results["gnn"] = {}
+    prediction_results["mf"] = {}
     for x_val in x_values:
         abc_top, abc_top_rel = score_topx(abc_result, value, x_val)
         gnn_top, gnn_top_rel = score_topx(gnn_result, value, x_val)
         mf_top, mf_top_rel = score_topx(mf_result, value, x_val)
 
-        print("top x || number of positive returns || score relative to x and positive ratio")
-        print(x_val, "|| abc score", abc_top, "|| abc relative score", abc_top_rel)
-        print(x_val, "|| gnn score", gnn_top, "|| gnn relative score", gnn_top_rel)
-        print(x_val, "|| mf score", mf_top, "|| mf relative score", mf_top_rel, "\n")
+        prediction_results["abc"][x_val] = (abc_top, abc_top_rel)
+        prediction_results["gnn"][x_val] = (gnn_top, gnn_top_rel)
+        prediction_results["mf"][x_val] = (mf_top, mf_top_rel)
+    comparison[key] = prediction_results
 
 print("evaluation done")
+
+# =========================== EVALUATION ===========================
+combination = {}
+for key, value in node_graphs.items():
+
+    x_values = [1,10,20,50,100]
+
+    prediction_results = {}
+    prediction_results["abc"] = {}
+    prediction_results["gnn"] = {}
+    prediction_results["mf"] = {}
+    for x_val in x_values:
+        abc_top, abc_top_rel = score_topx(abc_result, value, x_val)
+        gnn_top, gnn_top_rel = score_topx(gnn_result, value, x_val)
+        mf_top, mf_top_rel = score_topx(mf_result, value, x_val)
+
+        prediction_results["abc"][x_val] = (abc_top, abc_top_rel)
+        prediction_results["gnn"][x_val] = (gnn_top, gnn_top_rel)
+        prediction_results["mf"][x_val] = (mf_top, mf_top_rel)
+    comparison[key] = prediction_results
