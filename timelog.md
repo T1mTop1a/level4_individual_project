@@ -290,3 +290,4 @@
 * *4 hours* Making abc comparison 
 
 ### 25 Feb 2024
+* *5 hours* Completing comparison system and recording results from it
