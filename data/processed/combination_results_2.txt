@@ -1,150 +1,114 @@
 Evaluation nodes info
 node id || total edges || positive edges
-71  ||  249  ||  9
+608  ||  249  ||  9
 
 
 x value: 20
 score
 abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
-2 || 0 || 1 || 0 || 0 || 0 || 0
+1 || 0 || 1 || 0 || 0 || 0 || 0
 
 
 relative score
 abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
-2.766666666666667 || 0.0 || 1.3833333333333335 || 0.0 || 0 || 0.0 || 0
+1.3833333333333335 || 0.0 || 1.3833333333333335 || 0 || 0.0 || 0.0 || 0
 
 
 x value: 50
 score
 abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
-4 || 3 || 1 || 1 || 0 || 0 || 0
+1 || 3 || 4 || 0 || 3 || 0 || 0
 
 
 relative score
 abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
-2.2133333333333334 || 1.66 || 0.5533333333333333 || 3.4583333333333335 || 0.0 || 0.0 || 0.0
+0.5533333333333333 || 1.66 || 2.2133333333333334 || 0.0 || 8.3 || 0.0 || 0
 
 
 x value: 100
 score
 abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
-7 || 5 || 2 || 4 || 1 || 1 || 0
+2 || 6 || 7 || 1 || 5 || 2 || 1
 
 
 relative score
 abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
-1.936666666666667 || 1.3833333333333335 || 0.5533333333333333 || 2.634920634920635 || 0.7094017094017094 || 0.7094017094017094 || 0.0
+0.5533333333333333 || 1.66 || 1.936666666666667 || 0.6747967479674797 || 3.738738738738739 || 1.3495934959349594 || 2.1282051282051286
 
 
-352  ||  273  ||  16
+272  ||  273  ||  2
 
 
 x value: 20
 score
 abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
-3 || 3 || 2 || 1 || 0 || 0 || 0
+1 || 0 || 0 || 0 || 0 || 0 || 0
 
 
 relative score
 abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
-2.5593749999999997 || 2.5593749999999997 || 1.70625 || 8.53125 || 0 || 0.0 || 0
+6.825 || 0.0 || 0.0 || 0 || 0.0 || 0 || 0
 
 
 x value: 50
 score
 abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
-5 || 3 || 5 || 2 || 0 || 1 || 0
+2 || 0 || 0 || 0 || 0 || 0 || 0
 
 
 relative score
 abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
-1.70625 || 1.02375 || 1.70625 || 2.84375 || 0.0 || 2.1328125 || 0.0
+5.46 || 0.0 || 0.0 || 0.0 || 0.0 || 0.0 || 0.0
 
 
 x value: 100
 score
 abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
-10 || 6 || 10 || 4 || 3 || 5 || 2
+2 || 1 || 0 || 1 || 0 || 0 || 0
 
 
 relative score
 abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
-1.70625 || 1.02375 || 1.70625 || 2.0073529411764706 || 1.5511363636363638 || 2.245065789473684 || 3.7916666666666665
+2.73 || 1.365 || 0.0 || 3.9 || 0.0 || 0.0 || 0.0
 
 
-512  ||  282  ||  3
+289  ||  282  ||  12
 
 
 x value: 20
 score
 abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
-1 || 1 || 0 || 0 || 0 || 0 || 0
+0 || 0 || 1 || 0 || 0 || 0 || 0
 
 
 relative score
 abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
-4.7 || 4.7 || 0.0 || 0.0 || 0.0 || 0.0 || 0.0
+0.0 || 0.0 || 1.175 || 0.0 || 0 || 0.0 || 0
 
 
 x value: 50
 score
 abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
-1 || 1 || 1 || 0 || 0 || 0 || 0
+3 || 0 || 3 || 0 || 0 || 1 || 0
 
 
 relative score
-abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all 
-1.8800000000000001 || 1.8800000000000001 || 1.8800000000000001 || 0.0 || 0.0 || 0.0 || 0.0
+abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
+1.41 || 0.0 || 1.41 || 0.0 || 0.0 || 2.9375 || 0.0
 
 
 x value: 100
 score
 abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
-2 || 1 || 2 || 0 || 0 || 2 || 0
+4 || 1 || 3 || 0 || 0 || 1 || 0
 
 
 relative score
 abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
-1.8800000000000001 || 0.9400000000000001 || 1.8800000000000001 || 0.0 || 0.0 || 4.82051282051282 || 0.0
+0.9400000000000001 || 0.23500000000000001 || 0.705 || 0.0 || 0.0 || 0.7580645161290323 || 0.0       
 
 
-496  ||  319  ||  12
-
-
-x value: 20
-score
-abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
-3 || 0 || 1 || 0 || 0 || 1 || 0
-
-
-relative score
-abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
-3.9875 || 0.0 || 1.3291666666666666 || 0.0 || 0.0 || 13.291666666666666 || 0
-
-
-x value: 50
-score
-abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
-5 || 1 || 3 || 1 || 0 || 2 || 0
-
-
-relative score
-abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
-2.658333333333333 || 0.5316666666666666 || 1.5949999999999998 || 3.797619047619047 || 0.0 || 6.645833333333333 || 0
-
-
-x value: 100
-score
-abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
-7 || 6 || 5 || 3 || 3 || 3 || 1
-
-
-relative score
-abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
-1.8608333333333333 || 1.5949999999999998 || 1.3291666666666666 || 3.0673076923076925 || 2.57258064516129 || 2.2152777777777777 || 3.3229166666666665
-
-
-283  ||  334  ||  11
+157  ||  319  ||  1
 
 
 x value: 20
@@ -155,62 +119,98 @@ abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
 
 relative score
 abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
-0.0 || 0.0 || 0.0 || 0.0 || 0.0 || 0.0 || 0
+0.0 || 0.0 || 0.0 || 0 || 0.0 || 0.0 || 0
 
 
 x value: 50
 score
 abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
-0 || 0 || 1 || 0 || 0 || 0 || 0
+0 || 0 || 0 || 0 || 0 || 0 || 0
 
 
 relative score
 abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
-0.0 || 0.0 || 0.6072727272727272 || 0.0 || 0.0 || 0.0 || 0.0
+0.0 || 0.0 || 0.0 || 0.0 || 0.0 || 0.0 || 0.0
 
 
 x value: 100
 score
 abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
-4 || 2 || 3 || 2 || 0 || 1 || 0
+1 || 0 || 0 || 0 || 0 || 0 || 0
 
 
 relative score
 abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
-1.2145454545454544 || 0.6072727272727272 || 0.9109090909090908 || 1.9589442815249265 || 0.0 || 1.012121212121212 || 0.0
+3.1900000000000004 || 0.0 || 0.0 || 0.0 || 0.0 || 0.0 || 0.0
 
 
-385  ||  336  ||  20
+471  ||  334  ||  18
 
 
 x value: 20
 score
 abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
-2 || 0 || 0 || 0 || 0 || 0 || 0
+3 || 2 || 2 || 1 || 0 || 0 || 0
 
 
 relative score
 abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
-1.6800000000000002 || 0.0 || 0.0 || 0 || 0.0 || 0.0 || 0
+2.783333333333333 || 1.8555555555555556 || 1.8555555555555556 || 9.277777777777777 || 0.0 || 0.0 || 0
 
 
 x value: 50
 score
 abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
-4 || 2 || 1 || 2 || 0 || 0 || 0
+5 || 3 || 3 || 1 || 0 || 2 || 0
 
 
 relative score
 abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
-1.344 || 0.672 || 0.336 || 3.3600000000000003 || 0.0 || 0.0 || 0.0
+1.8555555555555556 || 1.1133333333333333 || 1.1133333333333333 || 2.319444444444444 || 0.0 || 6.185185185185184 || 0.0
 
 
 x value: 100
 score
 abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
-6 || 3 || 7 || 2 || 1 || 4 || 1
+11 || 6 || 5 || 3 || 3 || 3 || 2
 
 
 relative score
 abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
-1.008 || 0.504 || 1.1760000000000002 || 1.0838709677419356 || 0.5793103448275863 || 2.1 || 1.6800000000000002
+2.041111111111111 || 1.1133333333333333 || 0.9277777777777778 || 1.8555555555555556 || 1.6372549019607843 || 1.8555555555555556 || 2.8547008547008548
+
+
+619  ||  336  ||  22
+
+
+x value: 20
+score
+abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
+1 || 1 || 2 || 0 || 0 || 0 || 0
+
+
+relative score
+abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
+0.7636363636363637 || 0.7636363636363637 || 1.5272727272727273 || 0.0 || 0.0 || 0.0 || 0
+
+
+x value: 50
+score
+abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
+4 || 4 || 5 || 0 || 1 || 2 || 0
+
+
+relative score
+abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
+1.2218181818181817 || 1.2218181818181817 || 1.5272727272727273 || 0.0 || 1.5272727272727273 || 3.3939393939393936 || 0
+
+
+x value: 100
+score
+abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
+7 || 5 || 8 || 1 || 2 || 2 || 0
+
+
+relative score
+abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
+1.069090909090909 || 0.7636363636363637 || 1.2218181818181817 || 0.5454545454545454 || 1.018181818181818 || 1.018181818181818 || 0.0

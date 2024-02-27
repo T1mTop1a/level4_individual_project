@@ -393,3 +393,15 @@ for key, value in combination.items():
               "||", value["gnn x mf"][x_value][1],"||", value["mf x abc"][x_value][1],
               "||", value["all"][x_value][1])
         print("\n")
+
+# =========================== SAVE DATA ===========================
+
+combination_path = df.path_to_data(1, "combination_results_3.pkl")
+with open(combination_path, 'wb') as cp:
+    pickle.dump(combination, cp)
+
+node_graph_path = df.path_to_data(1, "node_graph_3.pkl")
+with open(node_graph_path, 'wb') as np:
+    pickle.dump(node_graphs, np)
+
+print("dumped data")
