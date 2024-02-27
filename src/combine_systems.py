@@ -278,17 +278,19 @@ def score_topx(results, original, x):
     for index in topx:
         if original.ground_truth[index].item() == 1:
             score +=1
-    
-    rel_score = (score / x) / (original.positives / list(original.ground_truth.size())[0])
+    if list(original.ground_truth.size())[0] > 0 and x > 0:
+        rel_score = (score / x) / (original.positives / list(original.ground_truth.size())[0])
+    else:
+        rel_score = 0
     return score, rel_score
+
+x_values = [20,50,100]
 
 comparison = {}
 for key, value in node_graphs.items():
     abc_result = abc_output[key]
     gnn_result = gnn_output[key]
     mf_result = mf_output[key]
-
-    x_values = [1,10,20,50,100]
 
     prediction_results = {}
     prediction_results["abc"] = {}
@@ -306,22 +308,88 @@ for key, value in node_graphs.items():
 
 print("evaluation done")
 
-# =========================== EVALUATION ===========================
+# =========================== COMBINATION ===========================
+
+def combine_topx(results1, results2, original, x):
+    topx1 = heapq.nlargest(x, range(len(results1)), results1.__getitem__)
+    topx2 = heapq.nlargest(x, range(len(results2)), results2.__getitem__)
+    score = 0
+    common_count = 0
+    for index in topx1:
+        if index in topx2:
+            common_count +=1
+            if original.ground_truth[index].item() == 1:
+                score +=1
+    if common_count > 0 and list(original.ground_truth.size())[0] > 0:
+        rel_score = (score / common_count) / (original.positives / list(original.ground_truth.size())[0])
+    else:
+        rel_score = 0
+    return score, rel_score, common_count
+
+def combine_all_topx(results1, results2, results3, original, x):
+    topx1 = heapq.nlargest(x, range(len(results1)), results1.__getitem__)
+    topx2 = heapq.nlargest(x, range(len(results2)), results2.__getitem__)
+    topx3 = heapq.nlargest(x, range(len(results3)), results3.__getitem__)
+    score = 0
+    common_count = 0
+    for index in topx1:
+        if index in topx2 and index in topx3:
+            common_count +=1
+            if original.ground_truth[index].item() == 1:
+                score +=1
+    if common_count > 0:
+        rel_score = (score / common_count) / (original.positives / list(original.ground_truth.size())[0])
+    else:
+        rel_score = 0
+    return score, rel_score, common_count
+
 combination = {}
 for key, value in node_graphs.items():
+    abc_result = abc_output[key]
+    gnn_result = gnn_output[key]
+    mf_result = mf_output[key]
 
-    x_values = [1,10,20,50,100]
-
-    prediction_results = {}
-    prediction_results["abc"] = {}
-    prediction_results["gnn"] = {}
-    prediction_results["mf"] = {}
+    combination_results = {}
+    combination_results["abc x gnn"] = {}
+    combination_results["gnn x mf"] = {}
+    combination_results["mf x abc"] = {}
+    combination_results["all"] = {}
     for x_val in x_values:
-        abc_top, abc_top_rel = score_topx(abc_result, value, x_val)
-        gnn_top, gnn_top_rel = score_topx(gnn_result, value, x_val)
-        mf_top, mf_top_rel = score_topx(mf_result, value, x_val)
+        abc_gnn_score, abc_gnn_rel_score, abc_gnn_common_count = combine_topx(abc_result, gnn_result, value, x_val)
+        gnn_mf_score, gnn_mf_rel_score, gnn_mf_common_count = combine_topx(gnn_result, mf_result, value, x_val)
+        mf_abc_score, mf_abc_rel_score, mf_abc_common_count = combine_topx(mf_result, abc_result, value, x_val)
+        all_score, all_rel_score, all_common_count = combine_all_topx(abc_result, gnn_result, mf_result, value, x_val)
+        
+        combination_results["abc x gnn"][x_val] = (abc_gnn_score, abc_gnn_rel_score, abc_gnn_common_count)
+        combination_results["gnn x mf"][x_val] = (gnn_mf_score, gnn_mf_rel_score, gnn_mf_common_count)
+        combination_results["mf x abc"][x_val] = (mf_abc_score, mf_abc_rel_score, mf_abc_common_count)
+        combination_results["all"][x_val] = (all_score, all_rel_score, all_common_count)
+    combination[key] = combination_results
 
-        prediction_results["abc"][x_val] = (abc_top, abc_top_rel)
-        prediction_results["gnn"][x_val] = (gnn_top, gnn_top_rel)
-        prediction_results["mf"][x_val] = (mf_top, mf_top_rel)
-    comparison[key] = prediction_results
+print("combination done")
+
+# =========================== PRINT ===========================
+
+print("Evaluation nodes info")    
+print("node id || total edges || positive edges")
+for key, value in combination.items():
+    print(key, " || ", list(node_graphs[key].ground_truth.size())[0], " || ", node_graphs[key].positives)
+    print("\n")
+
+    for x_value in x_values:
+        print("x value:", x_value)
+        print("score")
+        print("abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all ")
+        print(comparison[key]["abc"][x_value][0],"||", comparison[key]["gnn"][x_value][0],
+              "||", comparison[key]["mf"][x_value][0],"||", value["abc x gnn"][x_value][0],
+              "||", value["gnn x mf"][x_value][0],"||", value["mf x abc"][x_value][0],
+              "||", value["all"][x_value][0])
+
+        print("\n")
+        print("relative score")
+        print("abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all ")
+        print(comparison[key]["abc"][x_value][1],"||", comparison[key]["gnn"][x_value][1],
+              "||", comparison[key]["mf"][x_value][1],"||", value["abc x gnn"][x_value][1],
+              "||", value["gnn x mf"][x_value][1],"||", value["mf x abc"][x_value][1],
+              "||", value["all"][x_value][1])
+        print("\n")
