@@ -61,22 +61,18 @@ edge_value_train_tot = torch.cat((edge_value_train_pos, edge_value_train_neg))
 num_edges_train = edge_value_train_tot.size(dim=0)
 
 for i in range(num_edges_train):
-    # Set gradients to zero
+
     optimizer.zero_grad()
     
-    # Turn data into tensors
     value = torch.FloatTensor([edge_value_train_tot[i].item()])
     row = torch.LongTensor([pytorch_graph_before.edge_index[0][i].item()])
     col = torch.LongTensor([pytorch_graph_before.edge_index[1][i].item()])
 
-    # Predict and calculate loss
     prediction = model(row, col)
     loss = loss_func(prediction, value)
 
-    # Backpropagate
     loss.backward()
 
-    # Update the parameters
     optimizer.step()
 
 print("Completed training")

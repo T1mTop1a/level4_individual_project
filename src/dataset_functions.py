@@ -10,6 +10,13 @@ def path_to_data(level_of_current_directory, data_filename):
     file_path = os.path.join(current_directory, 'data', 'raw', data_filename)
     return file_path
 
+def path_to_processed_data(level_of_current_directory, data_filename):
+    current_directory = os.getcwd()
+    for i in range(level_of_current_directory):
+        current_directory = os.path.split(current_directory)[0]
+    file_path = os.path.join(current_directory, 'data', 'processed', data_filename)
+    return file_path
+
 def get_x_articles_with_mesh_tag_names(file_path, x):
     with gzip.open(file_path,'rt') as f:
         reader = jsonlines.Reader(f)

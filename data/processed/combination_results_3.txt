@@ -1,0 +1,216 @@
+Evaluation nodes info
+node id || total edges || positive edges
+613  ||  249  ||  10
+
+
+x value: 20
+score
+abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
+1 || 1 || 0 || 1 || 0 || 0 || 0
+
+
+relative score
+abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
+1.245 || 1.245 || 0.0 || 12.45 || 0.0 || 0.0 || 0
+
+
+x value: 50
+score
+abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
+4 || 1 || 1 || 1 || 0 || 0 || 0
+
+
+relative score
+abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
+1.992 || 0.498 || 0.498 || 1.9153846153846155 || 0.0 || 0.0 || 0.0
+
+
+x value: 100
+score
+abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
+6 || 3 || 3 || 1 || 0 || 2 || 0
+
+
+relative score
+abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
+1.494 || 0.747 || 0.747 || 0.5413043478260869 || 0.0 || 1.2146341463414634 || 0.0
+
+
+515  ||  273  ||  11
+
+
+x value: 20
+score
+abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
+2 || 0 || 2 || 0 || 0 || 0 || 0
+
+
+relative score
+abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
+2.481818181818182 || 0.0 || 2.481818181818182 || 0.0 || 0 || 0 || 0
+
+
+x value: 50
+score
+abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
+2 || 2 || 3 || 0 || 1 || 0 || 0
+
+
+relative score
+abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
+0.9927272727272727 || 0.9927272727272727 || 1.489090909090909 || 0.0 || 3.102272727272727 || 0.0 || 0.0
+
+
+x value: 100
+score
+abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
+6 || 4 || 3 || 1 || 1 || 2 || 1
+
+
+relative score
+abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
+1.489090909090909 || 0.9927272727272727 || 0.7445454545454545 || 0.6531100478468899 || 0.7520661157024793 || 1.418181818181818 || 1.6545454545454543
+
+
+43  ||  282  ||  9
+
+
+x value: 20
+score
+abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
+3 || 0 || 0 || 0 || 0 || 0 || 0
+
+
+relative score
+abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
+4.7 || 0.0 || 0.0 || 0 || 0.0 || 0.0 || 0
+
+
+x value: 50
+score
+abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
+6 || 1 || 0 || 1 || 0 || 0 || 0
+
+
+relative score
+abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
+3.7600000000000002 || 0.6266666666666667 || 0.0 || 4.476190476190476 || 0.0 || 0.0 || 0.0
+
+
+x value: 100
+score
+abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
+7 || 2 || 1 || 2 || 1 || 1 || 1
+
+
+relative score
+abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
+2.193333333333334 || 0.6266666666666667 || 0.31333333333333335 || 1.7407407407407407 || 0.8245614035087719 || 0.9215686274509804 || 2.088888888888889
+
+
+804  ||  319  ||  9
+
+
+x value: 20
+score
+abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
+3 || 0 || 0 || 0 || 0 || 0 || 0
+
+
+relative score
+abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
+5.316666666666666 || 0.0 || 0.0 || 0 || 0.0 || 0 || 0
+
+
+x value: 50
+score
+abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
+7 || 2 || 1 || 2 || 0 || 1 || 0
+
+
+relative score
+abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
+4.9622222222222225 || 1.4177777777777778 || 0.7088888888888889 || 10.126984126984127 || 0.0 || 5.063492063492063 || 0.0
+
+
+x value: 100
+score
+abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
+7 || 3 || 2 || 3 || 0 || 2 || 0
+
+
+relative score
+abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
+2.4811111111111113 || 1.0633333333333332 || 0.7088888888888889 || 4.430555555555555 || 0.0 || 2.7264957264957266 || 0.0
+
+
+812  ||  334  ||  13
+
+
+x value: 20
+score
+abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
+2 || 0 || 0 || 0 || 0 || 0 || 0
+
+
+relative score
+abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
+2.5692307692307694 || 0.0 || 0.0 || 0.0 || 0 || 0.0 || 0
+
+
+x value: 50
+score
+abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
+3 || 1 || 0 || 0 || 0 || 0 || 0
+
+
+relative score
+abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
+1.5415384615384615 || 0.5138461538461538 || 0.0 || 0.0 || 0.0 || 0.0 || 0.0
+
+
+x value: 100
+score
+abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
+7 || 2 || 1 || 1 || 0 || 1 || 0
+
+
+relative score
+abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
+1.7984615384615386 || 0.5138461538461538 || 0.2569230769230769 || 0.755656108597285 || 0.0 || 0.8028846153846153 || 0.0
+
+
+30  ||  336  ||  10
+
+
+x value: 20
+score
+abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
+1 || 1 || 1 || 0 || 0 || 1 || 0
+
+
+relative score
+abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
+1.6800000000000002 || 1.6800000000000002 || 1.6800000000000002 || 0 || 0 || 8.4 || 0
+
+
+x value: 50
+score
+abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
+5 || 1 || 1 || 1 || 0 || 1 || 0
+
+
+relative score
+abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
+3.3600000000000003 || 0.672 || 0.672 || 5.6 || 0.0 || 3.3600000000000003 || 0.0
+
+
+x value: 100
+score
+abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
+7 || 3 || 5 || 2 || 0 || 4 || 0
+
+
+relative score
+abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all
+2.3520000000000003 || 1.008 || 1.6800000000000002 || 2.24 || 0.0 || 4.2 || 0.0

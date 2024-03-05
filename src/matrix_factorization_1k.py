@@ -8,6 +8,7 @@ from torch_geometric.utils.convert import from_networkx
 import torch_geometric.transforms as T
 import torch.nn.functional as F
 from torch_geometric.utils import negative_sampling
+from torch.utils.data import TensorDataset, DataLoader
 from sklearn.metrics import roc_auc_score
 print("import complete")
 
@@ -50,30 +51,41 @@ class MatrixFactorization(torch.nn.Module):
     
 model = MatrixFactorization(n_nodes=1000)
 
-loss_func = torch.nn.MSELoss()
-
-optimizer = torch.optim.SGD(model.parameters(), lr=1e-7)
+optimizer = torch.optim.SGD(model.parameters(), lr=1e-5)
 print("defined model")
 
 edge_value_train_pos = torch.ones(pre_neg_sampling_edges_before_graph)
 edge_value_train_neg = torch.zeros(pytorch_graph_before.num_edges - pre_neg_sampling_edges_before_graph)
 edge_value_train_tot = torch.cat((edge_value_train_pos, edge_value_train_neg))
 
-num_edges_train = edge_value_train_tot.size(dim=0)
+dataset_edges = torch.transpose(pytorch_graph_before.edge_index, 0, 1)
+train_dataset = TensorDataset(dataset_edges, edge_value_train_tot)
+train_loader = DataLoader(train_dataset, batch_size=16, shuffle=True)
 
-for i in range(num_edges_train):
-    optimizer.zero_grad()
+for epoch in range(1,6):
+    for batch_edges, batch_labels in train_loader:
+        optimizer.zero_grad()
+        
+        values = []
+        rows = []
+        cols = []
+        for i in range(batch_labels.size(dim=0)):
 
-    value = torch.FloatTensor([edge_value_train_tot[i].item()])
-    row = torch.LongTensor([pytorch_graph_before.edge_index[0][i].item()])
-    col = torch.LongTensor([pytorch_graph_before.edge_index[1][i].item()])
+            values.append(batch_labels[i].item())
+            rows.append(batch_edges[i][0].item())
+            cols.append(batch_edges[i][1].item())
 
-    prediction = model(row, col)
-    loss = loss_func(prediction, value)
+        value = torch.FloatTensor(values)
+        row = torch.LongTensor(rows)
+        col = torch.LongTensor(cols)
 
-    loss.backward()
+        prediction = model(row, col)
+        loss = F.binary_cross_entropy_with_logits(prediction, value)
 
-    optimizer.step()
+        loss.backward()
+
+        optimizer.step()
+    print(f"Epoch: {epoch:03d}")
 
 print("Completed training")
 

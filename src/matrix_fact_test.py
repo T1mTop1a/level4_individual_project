@@ -2,6 +2,14 @@ import numpy as np
 from scipy.sparse import rand as sprand
 import torch
 
+a = torch.arange(8)
+a = torch.reshape(a, (2, 4))
+print(a)
+
+a = torch.transpose(a, 0, 1)
+print(a)
+
+'''
 # Make up some random explicit feedback ratings
 # and convert to a numpy array
 n_users = 1_000
@@ -66,3 +74,4 @@ mae = test_loss / num_samples
 
 print("RMSE:", rmse)
 print("MAE:", mae)
+'''

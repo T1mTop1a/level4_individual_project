@@ -396,11 +396,11 @@ for key, value in combination.items():
 
 # =========================== SAVE DATA ===========================
 
-combination_path = df.path_to_data(1, "combination_results_3.pkl")
+combination_path = df.path_to_data(1, "combination_results_5.pkl")
 with open(combination_path, 'wb') as cp:
     pickle.dump(combination, cp)
 
-node_graph_path = df.path_to_data(1, "node_graph_3.pkl")
+node_graph_path = df.path_to_data(1, "node_graph_5.pkl")
 with open(node_graph_path, 'wb') as np:
     pickle.dump(node_graphs, np)
 
