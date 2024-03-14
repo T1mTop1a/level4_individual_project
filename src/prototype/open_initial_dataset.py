@@ -14,9 +14,8 @@ with gzip.open(file_path,'rt') as f:
 
     reader = jsonlines.Reader(f)
     first_1000000_articles = []
+    print(reader.read())
 
-    article = reader.read()
-    print(article)
     '''
     major_mesh = []
     for tag in article['mesh']:

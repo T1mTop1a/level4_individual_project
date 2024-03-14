@@ -29,11 +29,14 @@ pytorch_graph_before = Data()
 pytorch_graph_after = Data()
 print("converted graphs")
 
-pytorch_graph_before.edge_index = torch.tensor([[0,0,0,0,0,0,0,0,1,2,3,4],[1,3,4,5,6,7,8,9,5,5,5,5]])
-pytorch_graph_after.edge_index = torch.tensor([[0,1],[1,5]])
+pytorch_graph_before.edge_index = torch.tensor([[0,0,0,0,1,1,1,1,6,6,6,6],[2,3,4,5,2,3,4,5,2,3,4,5]])
+pytorch_graph_after.edge_index = torch.tensor([[0,0,0,0,1,1,1,1,6,6,6,6],[2,3,4,5,2,3,4,5,2,3,4,5]])
 
-pytorch_graph_before.node_id = torch.arange(10)
-pytorch_graph_after.node_id = torch.arange(10)
+#pytorch_graph_before.edge_index = torch.tensor([[0,0,0,1,1,1,0,5,5,5],[2,3,4,2,3,4,6,2,3,4]])
+#pytorch_graph_after.edge_index = torch.tensor([[1,5],[6,6]])
+
+pytorch_graph_before.node_id = torch.arange(7)
+pytorch_graph_after.node_id = torch.arange(7)
 
 pre_neg_sampling_edges_before_graph =  pytorch_graph_before.num_edges
 pre_neg_sampling_edges_after_graph = pytorch_graph_after.num_edges
@@ -71,27 +74,29 @@ class Model(torch.nn.Module):
         )
         return pred
 
+model = Model(hidden_channels=64)
+
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+model = model.to(device)
+optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
+edge_index_train_pos = torch.ones(7)
+edge_index_train_neg = torch.zeros(3)
+edge_index_train_tot = torch.cat((edge_index_train_pos, edge_index_train_neg))
+
 sum = 0
 for i in range(100):
-    model = Model(hidden_channels=64)
-
-    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-    model = model.to(device)
-    optimizer = torch.optim.Adam(model.parameters(), lr=0.00001)
-    edge_index_train_pos = torch.ones(8)
-    edge_index_train_neg = torch.zeros(4)
-    edge_index_train_tot = torch.cat((edge_index_train_pos, edge_index_train_neg))
     for epoch in range(1,6):
-        total_loss = total_examples = 0
-        optimizer.zero_grad()
-        pytorch_graph_before.to(device)
-        pred = model(pytorch_graph_before)
-        ground_truth = edge_index_train_tot
-        loss = F.binary_cross_entropy_with_logits(pred, ground_truth)
-        loss.backward()
-        optimizer.step()
-        total_loss += float(loss) * pred.numel()
-        total_examples += pred.numel()
+        for batch_edges, batch_labels in train_loader:
+            total_loss = total_examples = 0
+            optimizer.zero_grad()
+            pytorch_graph_before.to(device)
+            pred = model(pytorch_graph_before)
+            ground_truth = edge_index_train_tot
+            loss = F.binary_cross_entropy_with_logits(pred, ground_truth)
+            loss.backward()
+            optimizer.step()
+            total_loss += float(loss) * pred.numel()
+            total_examples += pred.numel()
 
 
     preds_val = []
@@ -106,5 +111,6 @@ for i in range(100):
     pred_val = torch.cat(preds_val, dim=0).cpu().numpy()
     ground_truth_val = torch.cat(ground_truths_val, dim=0).cpu().numpy()
     auc = roc_auc_score(ground_truth_val, pred_val)
-    sum+=auc
+    sum += auc
+
 print(sum/100)

@@ -23,14 +23,23 @@ for node in after_2008_subgraph:
 
 before_2008_subgraph = before_2008_graph.subgraph(nodes)
 
-biodiversity_c = af.dict_of_c_given_a_weight(before_2008_graph, "Biodiversity")
-biodiversity_c_sorted = af.sort_c(biodiversity_c)
+c_weight = af.dict_of_c_given_a_weight(before_2008_subgraph, "United States Public Health Service")
+c_sorted_weight = af.sort_c(c_weight)
 
-biodiversity_after_neighbours = list(after_2008_graph.neighbors("Biodiversity"))
+c_frequency = af.dict_of_c_given_a_frequency(before_2008_subgraph, "United States Public Health Service")
+c_sorted_frequency = af.sort_c(c_frequency)
 
-for i in range(10):
-    name = biodiversity_c_sorted[i][0]
-    if name not in biodiversity_after_neighbours:
-        print(name, "is a new link, and was in position", i)
-    else:
-        print(name, "is not a new link")
+c_combined = af.dict_of_c_given_a_weight_frequency(before_2008_subgraph, "United States Public Health Service")
+c_sorted_combined = af.sort_c(c_combined)
+
+print("sorted by weight")
+for i in range(len(c_sorted_weight)):
+    print("pos:", i, "weight:",c_sorted_weight[i][1] ,"name:", c_sorted_weight[i][0])
+
+print("sorted by frequency")
+for i in range(len(c_sorted_frequency)):
+    print("pos:", i, "frequency:",c_sorted_frequency[i][1] ,"name:", c_sorted_frequency[i][0])
+
+print("sorted by combined")
+for i in range(len(c_sorted_combined)):
+    print("pos:", i, "score:",c_sorted_combined[i][1] ,"name:", c_sorted_combined[i][0])

@@ -6,7 +6,7 @@ after 2008 = 1000 nodes and 13084 edges
 
 graph neural network original:
 
-epochs || vector factors || learning rate || validation || run 1  || run 2  || run 3  || run 4  || run 5  || run mean || standard deviation ||
+epochs || hidden channels|| learning rate || validation || run 1  || run 2  || run 3  || run 4  || run 5  || run mean || standard deviation ||
 5      || 32             || 0.001         || roc auc    || 0.4987 || 0.5046 || 0.5004 || 0.5094 || 0.4999 || 0.5026   || 0.0044             ||
 10     || 32             || 0.001         || roc auc    || 0.4981 || 0.4951 || 0.5073 || 0.5153 || 0.5060 || 0.5044   || 0.0080             ||
 3      || 32             || 0.001         || roc auc    || 0.4907 || 0.5179 || 0.5033 || 0.5060 || 0.5107 || 0.5057   || 0.0101             ||

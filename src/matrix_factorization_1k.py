@@ -85,7 +85,6 @@ for epoch in range(1,6):
         loss.backward()
 
         optimizer.step()
-    print(f"Epoch: {epoch:03d}")
 
 print("Completed training")
 

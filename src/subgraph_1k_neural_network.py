@@ -99,11 +99,12 @@ print("define model")
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 print(f"Device: '{device}'")
 model = model.to(device)
-optimizer = torch.optim.Adam(model.parameters(), lr=0.00001)
+optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
 edge_index_train_pos = torch.ones(pre_neg_sampling_edges_before_graph)
 edge_index_train_neg = torch.zeros(pytorch_graph_before.num_edges - pre_neg_sampling_edges_before_graph)
 edge_index_train_tot = torch.cat((edge_index_train_pos, edge_index_train_neg))
-for epoch in range(1,6):
+
+for epoch in range(1,401):
     total_loss = total_examples = 0
     optimizer.zero_grad()
     pytorch_graph_before.to(device)

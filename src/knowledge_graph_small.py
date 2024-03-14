@@ -28,7 +28,11 @@ for key,val in tqdm(before_2008_pairs.items()):
     tail.append(pair[1])
     relation.append(val)
 
-df = pd.DataFrame({'head': head, 'relation': relation, 'tail': tail})
+head1 = [0,0,0,1,1,1,0,5,5,5]
+relation1 = [1,1,1,1,1,1,1,0,0,0]
+tail1 =[2,3,4,2,3,4,6,2,3,4]
+
+df = pd.DataFrame({'head': head1, 'relation': relation1, 'tail': tail1})
 
 print("Dataframe complete")
 
