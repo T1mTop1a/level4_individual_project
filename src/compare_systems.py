@@ -191,11 +191,12 @@ print("define model")
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 print(f"Device: '{device}'")
 model = model.to(device)
-optimizer = torch.optim.Adam(model.parameters(), lr=0.00001)
+optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
 edge_index_train_pos = torch.ones(pre_neg_sampling_edges_before_graph)
 edge_index_train_neg = torch.zeros(pytorch_graph_before.num_edges - pre_neg_sampling_edges_before_graph)
 edge_index_train_tot = torch.cat((edge_index_train_pos, edge_index_train_neg))
-for epoch in range(1,6):
+print("GNN training started")
+for epoch in range(1,501):
     total_loss = total_examples = 0
     optimizer.zero_grad()
     pytorch_graph_before.to(device)
@@ -206,8 +207,7 @@ for epoch in range(1,6):
     optimizer.step()
     total_loss += float(loss) * pred.numel()
     total_examples += pred.numel()
-    print(f"Epoch: {epoch:03d}, Loss: {total_loss / total_examples:.4f}")
-print("training complete")
+print("GNN training complete")
 
 gnn_output = {}
 for key, value in node_graphs.items():
@@ -237,13 +237,14 @@ model = MatrixFactorization(n_nodes=1000)
 
 loss_func = torch.nn.MSELoss()
 
-optimizer = torch.optim.SGD(model.parameters(), lr=1e-7)
+optimizer = torch.optim.SGD(model.parameters(), lr=1e-3)
 print("defined model")
 
 dataset_edges = torch.transpose(pytorch_graph_before.edge_index, 0, 1)
-train_dataset = TensorDataset(dataset_edges, edge_value_train_tot)
+train_dataset = TensorDataset(dataset_edges, edge_index_train_tot)
 train_loader = DataLoader(train_dataset, batch_size=16, shuffle=True)
 
+print("MF training started")
 for epoch in range(1,6):
     for batch_edges, batch_labels in train_loader:
         optimizer.zero_grad()
@@ -268,7 +269,7 @@ for epoch in range(1,6):
 
         optimizer.step()
     print(f"Epoch: {epoch:03d}")
-print("Completed training")
+print("MF training complete")
 
 mf_output = {}
 for key, graph in node_graphs.items():
@@ -306,10 +307,17 @@ for key, value in node_graphs.items():
 print("\n")
 print("\n")
 
+AUC_abc = []
+AUC_gnn = []
+AUC_mf = []
 for key, value in node_graphs.items():
     abc_result = abc_output[key]
     gnn_result = gnn_output[key]
     mf_result = mf_output[key]
+
+    AUC_abc.append(roc_auc_score(value.ground_truth, abc_result))
+    AUC_gnn.append(roc_auc_score(value.ground_truth, gnn_result))
+    AUC_mf.append(roc_auc_score(value.ground_truth, mf_result))
 
     x_values = [1,10,20,50,100]
 
@@ -324,4 +332,8 @@ for key, value in node_graphs.items():
         print(x_val, "|| gnn score", gnn_top, "|| gnn relative score", gnn_top_rel)
         print(x_val, "|| mf score", mf_top, "|| mf relative score", mf_top_rel, "\n")
 
+print("AUC scores")
+print("abc AUC score:", np.mean(AUC_abc))
+print("gnn AUC score:",np.mean(AUC_gnn))
+print("mf AUC score:", np.mean(AUC_mf))
 print("evaluation done")

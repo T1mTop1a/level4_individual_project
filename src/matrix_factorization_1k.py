@@ -51,7 +51,7 @@ class MatrixFactorization(torch.nn.Module):
     
 model = MatrixFactorization(n_nodes=1000)
 
-optimizer = torch.optim.SGD(model.parameters(), lr=1e-5)
+optimizer = torch.optim.SGD(model.parameters(), lr=1e-3)
 print("defined model")
 
 edge_value_train_pos = torch.ones(pre_neg_sampling_edges_before_graph)
@@ -60,7 +60,7 @@ edge_value_train_tot = torch.cat((edge_value_train_pos, edge_value_train_neg))
 
 dataset_edges = torch.transpose(pytorch_graph_before.edge_index, 0, 1)
 train_dataset = TensorDataset(dataset_edges, edge_value_train_tot)
-train_loader = DataLoader(train_dataset, batch_size=16, shuffle=True)
+train_loader = DataLoader(train_dataset, batch_size=32, shuffle=True)
 
 for epoch in range(1,6):
     for batch_edges, batch_labels in train_loader:
@@ -85,6 +85,7 @@ for epoch in range(1,6):
         loss.backward()
 
         optimizer.step()
+    print("Epoch:", epoch)
 
 print("Completed training")
 

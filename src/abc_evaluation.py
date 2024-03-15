@@ -17,7 +17,6 @@ for node in before_2008_graph.nodes():
     if count == 10:
         break
     if node in after_2008_graph:
-        print(node)
         count += 1
         node_results = {"new": [], "not_new": []}
         get_c = af.dict_of_c_given_a_weight(before_2008_graph, node)

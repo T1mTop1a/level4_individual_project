@@ -52,59 +52,59 @@ edge_index_train_neg = torch.zeros(4)
 edge_index_train_tot = torch.cat((edge_index_train_pos, edge_index_train_neg))
 
 dataset_edges = torch.transpose(pytorch_graph_before.edge_index, 0, 1)
+print(dataset_edges)
 train_dataset = TensorDataset(dataset_edges, edge_index_train_tot)
-train_loader = DataLoader(train_dataset, batch_size=16, shuffle=True)
+train_loader = DataLoader(train_dataset, batch_size=1, shuffle=True)
 
 model = MatrixFactorization(n_nodes=7)
 
 loss_func = torch.nn.MSELoss()
 
-optimizer = torch.optim.SGD(model.parameters(), lr=1e-5)
+optimizer = torch.optim.SGD(model.parameters(), lr=1e-3)
 
-for epoch in range(1,101):
-    for batch_edges, batch_labels in train_loader:
-        optimizer.zero_grad()
-        
-        values = []
-        rows = []
-        cols = []
-        for i in range(batch_labels.size(dim=0)):
+summ = 0
+for i in range(100):
+    for epoch in range(1,101):
+        for batch_edges, batch_labels in train_loader:
+            optimizer.zero_grad()
+            
+            values = []
+            rows = []
+            cols = []
+            for i in range(batch_labels.size(dim=0)):
 
-            values.append(batch_labels[i].item())
-            rows.append(batch_edges[i][0].item())
-            cols.append(batch_edges[i][1].item())
+                values.append(batch_labels[i].item())
+                rows.append(batch_edges[i][0].item())
+                cols.append(batch_edges[i][1].item())
 
-        value = torch.FloatTensor(values)
-        row = torch.LongTensor(rows)
-        col = torch.LongTensor(cols)
+            value = torch.FloatTensor(values)
+            row = torch.LongTensor(rows)
+            col = torch.LongTensor(cols)
+
+            prediction = model(row, col)
+            loss = F.binary_cross_entropy_with_logits(prediction, value)
+
+            loss.backward()
+
+            optimizer.step()
+
+    edge_index_val_pos = torch.ones(8)
+    edge_index_val_neg = torch.zeros(4)
+    edge_index_val_tot = torch.cat((edge_index_val_pos, edge_index_val_neg))
+
+    num_edges_test = edge_index_val_tot.size(dim=0)
+
+    predictions = []
+    for i in range(num_edges_test):
+
+        row = torch.LongTensor([pytorch_graph_after.edge_index[0][i].item()])
+        col = torch.LongTensor([pytorch_graph_after.edge_index[1][i].item()])
 
         prediction = model(row, col)
-        loss = F.binary_cross_entropy_with_logits(prediction, value)
+        predictions.append(prediction.item())
 
-        loss.backward()
+    ground_truth = edge_index_val_tot
+    auc = roc_auc_score(ground_truth, predictions)
+    summ += auc
 
-        optimizer.step()
-    print(f"Epoch: {epoch:03d}")
-
-print("Completed training")
-
-
-edge_index_val_pos = torch.ones(8)
-edge_index_val_neg = torch.zeros(4)
-edge_index_val_tot = torch.cat((edge_index_val_pos, edge_index_val_neg))
-
-num_edges_test = edge_index_val_tot.size(dim=0)
-
-predictions = []
-for i in range(num_edges_test):
-
-    row = torch.LongTensor([pytorch_graph_after.edge_index[0][i].item()])
-    col = torch.LongTensor([pytorch_graph_after.edge_index[1][i].item()])
-
-    prediction = model(row, col)
-    predictions.append(prediction.item())
-
-ground_truth = edge_index_val_tot
-auc = roc_auc_score(ground_truth, predictions)
-
-print(auc)
+print(summ/100)

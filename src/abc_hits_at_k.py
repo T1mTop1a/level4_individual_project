@@ -6,9 +6,10 @@
 import dataset_functions as df
 import abc_functions as af
 import pickle
+import statistics as stats
 
-before_2008_subgraph_path = df.path_to_data(1, "before_2008_subgraph.pkl")
-after_2008_subgraph_path = df.path_to_data(1, "after_2008_subgraph.pkl")
+before_2008_subgraph_path = df.path_to_data(1, "before_2008_subgraph_1k.pkl")
+after_2008_subgraph_path = df.path_to_data(1, "after_2008_subgraph_1k.pkl")
 
 with open(before_2008_subgraph_path, 'rb') as bg:
     before_2008_graph = pickle.load(bg)
@@ -83,25 +84,43 @@ for node in before_2008_graph.nodes():
     results_weight_frequency[node] = node_results_weight_frequency
 
 total_results_weight = {"one": 0, "five": 0, "ten": 0, "twenty": 0}
+list_of_weight_results = {"one": [], "five": [], "ten": [], "twenty": []}
 for node in results_weight:
     total_results_weight["one"] += results_weight[node]["one"]
     total_results_weight["five"] += results_weight[node]["five"]
     total_results_weight["ten"] += results_weight[node]["ten"]
     total_results_weight["twenty"] += results_weight[node]["twenty"]
 
+    list_of_weight_results["one"].append(results_weight[node]["one"])
+    list_of_weight_results["five"].append(results_weight[node]["five"])
+    list_of_weight_results["ten"].append(results_weight[node]["ten"])
+    list_of_weight_results["twenty"].append(results_weight[node]["twenty"])
+
 total_results_frequency = {"one": 0, "five": 0, "ten": 0, "twenty": 0}
+list_of_frequency_results = {"one": [], "five": [], "ten": [], "twenty": []}
 for node in results_frequency:
     total_results_frequency["one"] += results_frequency[node]["one"]
     total_results_frequency["five"] += results_frequency[node]["five"]
     total_results_frequency["ten"] += results_frequency[node]["ten"]
     total_results_frequency["twenty"] += results_frequency[node]["twenty"]
 
+    list_of_frequency_results["one"].append(results_frequency[node]["one"])
+    list_of_frequency_results["five"].append(results_frequency[node]["five"])
+    list_of_frequency_results["ten"].append(results_frequency[node]["ten"])
+    list_of_frequency_results["twenty"].append(results_frequency[node]["twenty"])
+
 total_results_weight_frequency = {"one": 0, "five": 0, "ten": 0, "twenty": 0}
+list_of_weight_frequency_results = {"one": [], "five": [], "ten": [], "twenty": []}
 for node in results_weight_frequency:
     total_results_weight_frequency["one"] += results_weight_frequency[node]["one"]
     total_results_weight_frequency["five"] += results_weight_frequency[node]["five"]
     total_results_weight_frequency["ten"] += results_weight_frequency[node]["ten"]
     total_results_weight_frequency["twenty"] += results_weight_frequency[node]["twenty"]
+
+    list_of_weight_frequency_results["one"].append(results_weight_frequency[node]["one"])
+    list_of_weight_frequency_results["five"].append(results_weight_frequency[node]["five"])
+    list_of_weight_frequency_results["ten"].append(results_weight_frequency[node]["ten"])
+    list_of_weight_frequency_results["twenty"].append(results_weight_frequency[node]["twenty"])
 
 print("Results:")
 print("")
@@ -110,20 +129,20 @@ print("before 2008 edges:", before_2008_graph.size())
 print("after 2008 edges:", after_2008_graph.size())
 print("")
 print("Weight only:")
-print("one ratio =", total_results_weight["one"]/100)
-print("five ratio =", total_results_weight["five"]/500)
-print("ten ratio =", total_results_weight["ten"]/1000)
-print("twenty ratio =", total_results_weight["twenty"]/2000)
+print("one ratio =", total_results_weight["one"]/100, "std deviation =", stats.stdev(list_of_weight_results["one"]))
+print("five ratio =", total_results_weight["five"]/500, "std deviation =", stats.stdev(list_of_weight_results["five"]))
+print("ten ratio =", total_results_weight["ten"]/1000, "std deviation =", stats.stdev(list_of_weight_results["ten"]))
+print("twenty ratio =", total_results_weight["twenty"]/2000, "std deviation =", stats.stdev(list_of_weight_results["twenty"]))
 print("")
 print("Frequency only:")
-print("one ratio =", total_results_frequency["one"]/100)
-print("five ratio =", total_results_frequency["five"]/500)
-print("ten ratio =", total_results_frequency["ten"]/1000)
-print("twenty ratio =", total_results_frequency["twenty"]/2000)
+print("one ratio =", total_results_frequency["one"]/100, "std deviation =", stats.stdev(list_of_frequency_results["one"])/100)
+print("five ratio =", total_results_frequency["five"]/500, "std deviation =", stats.stdev(list_of_frequency_results["five"])/500)
+print("ten ratio =", total_results_frequency["ten"]/1000, "std deviation =", stats.stdev(list_of_frequency_results["ten"])/1000)
+print("twenty ratio =", total_results_frequency["twenty"]/2000, "std deviation =", stats.stdev(list_of_frequency_results["twenty"])/2000)
 print("")
 print("Weight and Frequency:")
-print("one ratio =", total_results_weight_frequency["one"]/100)
-print("five ratio =", total_results_weight_frequency["five"]/500)
-print("ten ratio =", total_results_weight_frequency["ten"]/1000)
-print("twenty ratio =", total_results_weight_frequency["twenty"]/2000)
+print("one ratio =", total_results_weight_frequency["one"]/100, "std deviation =", stats.stdev(list_of_weight_frequency_results["one"])/100)
+print("five ratio =", total_results_weight_frequency["five"]/500, "std deviation =", stats.stdev(list_of_weight_frequency_results["five"])/500)
+print("ten ratio =", total_results_weight_frequency["ten"]/1000, "std deviation =", stats.stdev(list_of_weight_frequency_results["ten"])/1000)
+print("twenty ratio =", total_results_weight_frequency["twenty"]/2000, "std deviation =", stats.stdev(list_of_weight_frequency_results["twenty"])/2000)
 print("")
