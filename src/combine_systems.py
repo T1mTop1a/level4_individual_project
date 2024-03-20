@@ -195,6 +195,7 @@ optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
 edge_index_train_pos = torch.ones(pre_neg_sampling_edges_before_graph)
 edge_index_train_neg = torch.zeros(pytorch_graph_before.num_edges - pre_neg_sampling_edges_before_graph)
 edge_index_train_tot = torch.cat((edge_index_train_pos, edge_index_train_neg))
+print("GNN training started")
 for epoch in range(1,501):
     total_loss = total_examples = 0
     optimizer.zero_grad()
@@ -206,7 +207,7 @@ for epoch in range(1,501):
     optimizer.step()
     total_loss += float(loss) * pred.numel()
     total_examples += pred.numel()
-print("GNN Training Complete")
+print("GNN training complete")
 
 gnn_output = {}
 for key, value in node_graphs.items():
@@ -239,12 +240,11 @@ loss_func = torch.nn.MSELoss()
 optimizer = torch.optim.SGD(model.parameters(), lr=1e-3)
 print("defined model")
 
-num_edges_train = edge_index_train_tot.size(dim=0)
-
 dataset_edges = torch.transpose(pytorch_graph_before.edge_index, 0, 1)
 train_dataset = TensorDataset(dataset_edges, edge_index_train_tot)
-train_loader = DataLoader(train_dataset, batch_size=32, shuffle=True)
+train_loader = DataLoader(train_dataset, batch_size=16, shuffle=True)
 
+print("MF training started")
 for epoch in range(1,6):
     for batch_edges, batch_labels in train_loader:
         optimizer.zero_grad()
@@ -268,9 +268,8 @@ for epoch in range(1,6):
         loss.backward()
 
         optimizer.step()
-    print("Epoch:", epoch)
-
-print("MF Training Complete")
+    print(f"Epoch: {epoch:03d}")
+print("MF training complete")
 
 mf_output = {}
 for key, graph in node_graphs.items():
@@ -285,7 +284,6 @@ for key, graph in node_graphs.items():
     mf_output[key] = predictions
 
 print("Matrix Factorization complete")
-
 # =========================== EVALUATION ===========================
 
 def score_topx(results, original, x):
@@ -392,11 +390,22 @@ for key, value in combination.items():
     print(key, " || ", list(node_graphs[key].ground_truth.size())[0], " || ", node_graphs[key].positives)
     print("\n")
 
+for key, value in combination.items():
+    print(key, " || ", list(node_graphs[key].ground_truth.size())[0], " || ", node_graphs[key].positives)
+    print("\n")
+
     for x_value in x_values:
         print("x value:", x_value)
-        print("score")
+        print("common count")
         print("abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all ")
-        print(comparison[key]["abc"][x_value][0],"||", comparison[key]["gnn"][x_value][0],
+        print(x_value,"||", x_value, "||", x_value,"||", value["abc x gnn"][x_value][2],
+              "||", value["gnn x mf"][x_value][2],"||", value["mf x abc"][x_value][2],
+              "||", value["all"][x_value][2])
+        
+        print("x value:", x_value)
+        print("common count")
+        print("abc || gnn || mf || abc x gnn || gnn x mf || mf x abc || all ")
+        print(comparison[key]["abc"][x_value][0],"||", comparison[key]["gnn"][x_value][0], 
               "||", comparison[key]["mf"][x_value][0],"||", value["abc x gnn"][x_value][0],
               "||", value["gnn x mf"][x_value][0],"||", value["mf x abc"][x_value][0],
               "||", value["all"][x_value][0])
@@ -412,11 +421,11 @@ for key, value in combination.items():
 
 # =========================== SAVE DATA ===========================
 
-combination_path = df.path_to_data(1, "combination_results_5.pkl")
+combination_path = df.path_to_data(1, "combination_results_3.pkl")
 with open(combination_path, 'wb') as cp:
     pickle.dump(combination, cp)
 
-node_graph_path = df.path_to_data(1, "node_graph_5.pkl")
+node_graph_path = df.path_to_data(1, "node_graph_3.pkl")
 with open(node_graph_path, 'wb') as np:
     pickle.dump(node_graphs, np)
 

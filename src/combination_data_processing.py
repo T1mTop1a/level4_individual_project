@@ -4,51 +4,49 @@ import re
 
 # =========================== OPEN DATA ===========================
 
+'''
 combination_results_1_path = df.path_to_data(1, "combination_results_1.pkl")
 combination_results_2_path = df.path_to_data(1, "combination_results_2.pkl")
 combination_results_3_path = df.path_to_data(1, "combination_results_3.pkl")
-combination_results_4_path = df.path_to_data(1, "combination_results_4.pkl")
-combination_results_5_path = df.path_to_data(1, "combination_results_4.pkl")
+'''
 
 txt_results_1_path = df.path_to_processed_data(1, "combination_results_1.txt")
 txt_results_2_path = df.path_to_processed_data(1, "combination_results_2.txt")
 txt_results_3_path = df.path_to_processed_data(1, "combination_results_3.txt")
-txt_results_4_path = df.path_to_processed_data(1, "combination_results_4.txt")
-txt_results_5_path = df.path_to_processed_data(1, "combination_results_4.txt")
 
+'''
 with open(combination_results_1_path, 'rb') as cr1:
     combination_results_1 = pickle.load(cr1)
 with open(combination_results_2_path, 'rb') as cr2:
     combination_results_2 = pickle.load(cr2)
 with open(combination_results_3_path, 'rb') as cr3:
     combination_results_3 = pickle.load(cr3)
-with open(combination_results_4_path, 'rb') as cr4:
-    combination_results_4 = pickle.load(cr4)
-with open(combination_results_5_path, 'rb') as cr5:
-    combination_results_5 = pickle.load(cr5)
+'''
 
 f1 = open(txt_results_1_path, "r")
 f2 = open(txt_results_2_path, "r")
 f3 = open(txt_results_3_path, "r")
-f4 = open(txt_results_4_path, "r")
-f5 = open(txt_results_5_path, "r")
 
 print("opened data")
 
 # =========================== CREATE NEW STRUCTURES ===========================
 
-x_data_sum = {20:{"abc":0, "gnn":0, "mf":0, "abc x gnn":0, "gnn x mf":0, "mf x abc":0, "all":0}, 
-          50:{"abc":0, "gnn":0, "mf":0, "abc x gnn":0, "gnn x mf":0, "mf x abc":0, "all":0}, 
-          100:{"abc":0, "gnn":0, "mf":0, "abc x gnn":0, "gnn x mf":0, "mf x abc":0, "all":0}}
+x_score_sum = {20:[0,0,0,0,0,0,0], 
+          50:[0,0,0,0,0,0,0], 
+          100:[0,0,0,0,0,0,0]}
 
-x_data_values = {20:{"abc x gnn":[], "gnn x mf":[], "mf x abc":[], "all":[]}, 
-          50:{"abc x gnn":[], "gnn x mf":[], "mf x abc":[], "all":[]}, 
-          100:{"abc x gnn":[], "gnn x mf":[], "mf x abc":[], "all":[]}}
+x_common_sum = {20:[0,0,0,0,0,0,0], 
+          50:[0,0,0,0,0,0,0], 
+          100:[0,0,0,0,0,0,0]}
 
-key_count = len(combination_results_1) + len(combination_results_2) + len(combination_results_3) + len(combination_results_4) + len(combination_results_5)
+x_correct_sum = {20:[0,0,0,0,0,0,0], 
+          50:[0,0,0,0,0,0,0], 
+          100:[0,0,0,0,0,0,0]}
+
+key_count = 18
 
 # =========================== PROCESS PICKLED DATA ===========================
-
+'''
 for key in combination_results_1:
     for combo in combination_results_1[key]:
         for x in combination_results_1[key][combo]:
@@ -78,22 +76,46 @@ for key in combination_results_5:
         for x in combination_results_5[key][combo]:
             x_data_sum[x][combo] += combination_results_5[key][combo][x][1]
             x_data_values[x][combo].append(combination_results_5[key][combo][x][1])
+'''
 
 # =========================== PROCESS TEXT DATA ===========================
 
-text_files = [f1,f2,f3,f4,f5]
+text_files = [f1,f2,f3]
 for file in text_files:
+    line_num = 0
     x = 0
     line = file.readline()
     while line != "":
-        if line[0] == "x":
+        line_num += 1
+        if (line_num < 20):
+            line = file.readline()
+            continue
+        elif line[0] == "x":
+            common = []
+            correct = []
+            score = []
             x = int(re.findall(r'[\d]+', line)[0])
-        if line[0].isnumeric(): 
-            scores = re.findall(r'[\d]*[.][\d]+', line)
-            if len(scores) > 1:
-                x_data_sum[x]["abc"] += float(scores[0])
-                x_data_sum[x]["gnn"] += float(scores[1])
-                x_data_sum[x]["mf"] += float(scores[2])
+            line = file.readline()
+            line = file.readline()
+            line = file.readline()
+            common = re.findall(r'[\d]+', line)
+            for i in range(7):
+                x_common_sum[x][i] += int(common[i])
+            line = file.readline()
+            line = file.readline()
+            line = file.readline()
+            line = file.readline()
+            correct = re.findall(r'[\d]+', line)
+            for i in range(7):
+                x_correct_sum[x][i] += int(correct[i])
+            line = file.readline()
+            line = file.readline()
+            line = file.readline()
+            line = file.readline()
+            line = file.readline()
+            score = re.findall(r'[\d]*[.][\d]+', line)
+            for i in range(7):
+                x_score_sum[x][i] += float(score[i])
         line = file.readline()
     file.close()
 
@@ -101,6 +123,13 @@ for file in text_files:
 
 print("key_count:", key_count)
 print("\nrelative score averages")
-for x in x_data_sum:
-    for combo in x_data_sum[x]:
-        print(x, combo, x_data_sum[x][combo]/key_count)
+for x in x_score_sum:
+    print(x, ":", [j/key_count for j in x_score_sum[x]])
+
+print("\nrelative correct averages")
+for x in x_correct_sum:
+    print(x, ":", [j/key_count for j in x_correct_sum[x]])
+
+print("\nrelative common averages")
+for x in x_common_sum:
+    print(x, ":", [j/key_count for j in x_common_sum[x]])

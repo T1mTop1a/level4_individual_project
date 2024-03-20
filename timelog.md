@@ -289,5 +289,70 @@
 ### 24 Feb 2024
 * *4 hours* Making abc comparison 
 
+## Week 22
+
 ### 25 Feb 2024
 * *5 hours* Completing comparison system and recording results from it
+
+### 26 Feb 2024 
+* *3 hours* Completing combination system 
+* *1 hour* Writing Background 
+
+### 27 Feb 2024
+* *3 hours* Writing Background
+
+### 28 Feb 2024
+* *5 hours* Conducting sanity checks
+
+### 29 Feb 2024
+* *1/2 hour* Preparing for supervisor meeting
+* *1/2 hour* Meeting with supervisor
+* *1/2 hour* Writing up meeting minutes and timelog
+
+## Week 23
+
+### 4 Mar 2024
+* *2 hours* Changing Matrix factorisation system
+
+### 5 Mar 2024 
+* *4 hours* Wrote more of Diss
+
+### 7 Mar 2024
+* *4 hours* Wrote more of Diss
+* *1/2 hour* Preparing for supervisor meeting
+* *1/2 hour* Meeting with supervisor
+* *1/2 hour* Writing up meeting minutes and timelog
+
+## Week 24
+
+### 12 Mar 2024
+* *8 hours* Writing Implementation
+
+### 13 Mar 2024
+* *8 hours* Writing Implementation
+
+### 14 Mar 2024
+* *4 hours* Writing Implementation
+* *1/2 hour* Preparing for supervisor meeting
+* *1/2 hour* Meeting with supervisor
+* *1/2 hour* Writing up meeting minutes and timelog
+
+### 15 Mar 2024
+* *4 hours* Writing Dissertation
+
+### 16 Mar 2024
+* *8 hours* Writing Dissertation
+
+### 17 Mar 2024
+* *8 hours* Writing Dissertation
+
+## Week 25
+
+### 18 Mar 2024
+* *8 hours* Writing Dissertation
+
+### 19 Mar 2024
+* *8 hours* Writing Dissertation
+
+### 20 Mar 2024
+* *8 hours* Writing Dissertation
