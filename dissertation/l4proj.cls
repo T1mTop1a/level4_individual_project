@@ -109,6 +109,7 @@
 
 % make all cross-references clickable
 \usepackage[hidelinks]{hyperref}
+\usepackage{cleveref}
 
 % enable styled captions
 \usepackage[format=plain,
